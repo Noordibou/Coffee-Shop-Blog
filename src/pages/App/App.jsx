@@ -4,6 +4,7 @@ import Add from '../../components/Add/Add';
 import CoffeeShopsPage from '../CoffeeShopsPage/CoffeeShopsPage';
 import CoffeeShopDetailPage from '../CoffeeShopDetailPage/CoffeeShopDetailPage';
 import NavBar from '../../components/NavBar/NavBar';
+import Home from '../Home/Home';
 import './App.css';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
     <main className="bg-gray-100 min-h-screen">
       <NavBar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/coffeeshops" element={<CoffeeShopsPage />} />
         <Route path="/createCS" element={<Add />} />
         <Route path="/details/:id" element={<CoffeeShopDetailPage />} />
