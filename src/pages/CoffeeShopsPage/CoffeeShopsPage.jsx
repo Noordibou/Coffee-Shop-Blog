@@ -11,6 +11,7 @@ export default function CoffeeShopsPage() {
       .then((response) => setCoffeeShop(response.data))
       .catch((error) => console.log(error));
   };
+
   useEffect(() => {
     getCoffeeShop();
   }, []);
@@ -19,19 +20,18 @@ export default function CoffeeShopsPage() {
     <>
       <div>
         <main className="bg-gray-100 min-h-screen">
-          <h2 className="text-2xl font-bold mt-8 px-4">Coffee Shop Listings</h2>
-          <div className="container mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="text-2xl font-bold mt-8 pl-4 md:pl-8">Coffee Shop Listings</h2>
+          <div className="container mx-auto px-4 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {coffeeShop.map((shop) => {
-
               return (
-                <div key={shop._id} className="mb-4">
-                  <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div key={shop._id} className="mb-4 h-full">
+                  <div className="bg-white shadow-lg rounded-lg overflow-hidden h-full">
                     <img
                       src={shop.image}
                       alt={shop.name}
                       className="w-full h-48 object-cover"
                     />
-                    <div className="p-4">
+                    <div className="p-4 h-full">
                       <h3 className="text-xl font-semibold">{shop.name}</h3>
                       <p className="text-gray-700">
                         By: {shop.writer}
