@@ -9,7 +9,7 @@ import './App.css';
 
 export default function App() {
   return (
-    <main className="bg-gray-100 min-h-screen">
+    <main className=" ">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

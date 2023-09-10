@@ -1,48 +1,120 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react';
 
+const Edit = ({ shop, onEditSubmit }) => {
+  const [editedShop, setEditedShop] = useState({});
+  const [isFormOpen, setIsFormOpen] = useState(false); 
 
-const Edit = (props) => {
-  const [shop, setShop] = useState({...props.shop})
+  useEffect(() => {
+    setEditedShop(shop);
+  }, [shop]);
 
-  const handleChange = (event) => {
-    setShop({...shop, [event.target.name]: event.target.value})
-  }
+  const handleChange = (e) => {
+    setEditedShop({ ...editedShop, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    props.handleEdit(shop)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onEditSubmit(editedShop);
+    setIsFormOpen(false); 
+  };
 
   return (
     <>
-      <details>
-        <summary>Edit Coffee Shop</summary>
-        <form onSubmit={handleSubmit}>
-        <div>
-            <input type='text' placeholder='Name' value={shop.name} name='name' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Author' value={shop.writer} name='writer' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Description' value={shop.description} name='description' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Featured Items' value={shop.featuredItems} name='featuredItems' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Website' value={shop.website} name='website' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='City, State' value={shop.cityState} name='cityState' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Location' value={shop.location} name='location' onChange={handleChange}/>
-            <br/><br/>
-            <input type='number' placeholder='Ratings' value={shop.rating} name='rating' onChange={handleChange}/>
-            <br/><br/>
-            <input type='text' placeholder='Image' value={shop.image} name='image' onChange={handleChange}/>
-            <br/><br/>
-            <input type='submit' />
-            </div>
-        </form>
-      </details>
-    </>
-  )
-}
+      <button
+        onClick={() => setIsFormOpen(!isFormOpen)} 
+        className="text-bodyColor hover:underline cursor-pointer"
+      >
+        {isFormOpen ? 'Close Edit Form' : 'Edit Coffee Shop'}
+      </button>
 
-export default Edit
+      {isFormOpen && (
+            <div className="p-2 border rounded-lg border-gray-300">
+                <summary className="text-lg font-semibold">Edit Coffee Shop</summary>
+                <form onSubmit={handleSubmit}>
+                    <div className="mt-4 space-y-4">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={editedShop.name}
+                            name="name"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Author"
+                            value={editedShop.writer}
+                            name="writer"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <textarea
+                            type="text"
+                            placeholder="Description"
+                            value={editedShop.description}
+                            name="description"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 h-[200px] border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Featured Items"
+                            value={editedShop.featuredItems}
+                            name="featuredItems"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Website"
+                            value={editedShop.website}
+                            name="website"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="City, State"
+                            value={editedShop.cityState}
+                            name="cityState"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Location"
+                            value={editedShop.location}
+                            name="location"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="number"
+                            placeholder="Ratings"
+                            value={editedShop.rating}
+                            name="rating"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Image"
+                            value={editedShop.image}
+                            name="image"
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                        />
+                        <input
+                            type="submit"
+                            value="Submit"
+                            className="px-4 py-2 bg-bodyColor text-white rounded-md hover:bg-gray-600 cursor-pointer"
+                        />
+                    </div>
+                </form>
+            </div>
+             )}
+        </>
+    );
+};
+
+export default Edit;

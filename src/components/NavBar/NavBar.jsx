@@ -24,14 +24,14 @@ export default function Navbar() {
   };
 
   return (
-    <div className='sticky top-0 bg-bodyColor z-50 px-4'>
-      <div className='flex justify-between px-4 py-3'>
-        <h2 className='text-3xl font-semibold text-bgColor px-2'>
+    <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
+      <div className='flex md:justify-around justify-between px-4 py-2'>
+        <h2 className='text-3xl font-semibold font-titleFont text-bodyColor px-2'>
           <Link to='/'>Caffeine Chronicles</Link> 
         </h2>
         <div ref={menuRef}>
           <button 
-            className='block lg:hidden pt-2 text-bgColor'
+            className='block md:hidden pt-2 text-bodyColor'
             onClick={handleMenuButtonClick}
           >
             <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' >
@@ -40,8 +40,8 @@ export default function Navbar() {
           </button>
           
           {isMenuOpen && (
-            <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden absolute top-16 left-0 w-full bg-bodyColor`}>
-              <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bgColor cursor-pointer'>
+            <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-16 left-0 w-full bg-gray-100`}>
+              <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bodyColor cursor-pointer'>
                 <li>
                   <Link to='/coffeeshops' onClick={() => setIsMenuOpen(false)}>Coffee Shops</Link>
                 </li>
@@ -53,7 +53,7 @@ export default function Navbar() {
           )}
         </div>
         
-        <ul className='hidden lg:flex justify-center gap-6 text-bgColor text-[18px] font-titleFont'>
+        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-2'>
           <li>
             <Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-mainColor'>Coffee Shops</Link>
           </li>

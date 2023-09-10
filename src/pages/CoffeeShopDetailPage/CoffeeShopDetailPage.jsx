@@ -9,6 +9,7 @@ export default function CoffeeShopDetailPage() {
   const [coffeeShop, setCoffeeShop] = useState({});
   const navigate = useNavigate();
 
+
   const handleDelete = () => {
     axios
       .delete(`http://localhost:3000/coffeeshops/${id}/`)
@@ -16,13 +17,13 @@ export default function CoffeeShopDetailPage() {
       .catch((err) => console.log(err));
   };
 
-  const handleEdit = (editedShop) => {
-    axios
-      .put(`http://localhost:3000/coffeeshops/${id}/`, editedShop)
-      .then((res) => setCoffeeShop(res.data))
-      .catch((err) => console.log(err));
-  };
-
+  const handleEditSubmit = (editedShop) => {
+    axios.put(`/coffeeshops/${id}`, editedShop)
+      .then(res => {
+        setCoffeeShop(res.data);
+      })
+  }
+  
   useEffect(() => {
     axios
       .get(`http://localhost:3000/coffeeshops/${id}/`)
@@ -30,7 +31,6 @@ export default function CoffeeShopDetailPage() {
       .catch((err) => console.log(err));
   }, [id]);
 
-  // Function to convert location string to Google Maps link
   const makeGoogleMapsLink = (locationString) => {
     if (locationString && locationString.startsWith("https://www.google.com/maps")) {
       return locationString;
@@ -40,74 +40,81 @@ export default function CoffeeShopDetailPage() {
     }
   };
 
-  // Get the Google Maps link for the location field
   const googleMapsLink = makeGoogleMapsLink(coffeeShop.location);
+
 
   return (
     <>
-      <div className="container mx-auto">
-        <h1 className="text-3xl font-bold">{coffeeShop.name}</h1>
-        <h5 className="text-gray-600">Written by {coffeeShop.writer}</h5>
-        <div className="flex justify-center items-center mt-4">
-          <img
-            src={coffeeShop.image}
-            alt={coffeeShop.name}
-            className="w-full md:w-1/2 md:h-auto rounded-lg"
-          />
-        </div>
-        <div className="mt-4 md:flex justify-between items-start">
-          <div className="md:w-1/2">
-            <p className="text-gray-700">
-              Located in <strong>{coffeeShop.cityState}</strong>
-            </p>
-            <p className="text-gray-700">{coffeeShop.description}</p>
-            <p className="text-gray-700">
-              <strong>Featured Items:</strong> {coffeeShop.featuredItems}
-            </p>
-            <p className="text-gray-700">
-              <strong>Rating:</strong> {coffeeShop.rating}
-            </p>
-            {coffeeShop.website && (
-              <p className="text-gray-700">
-                <strong>Website:</strong>{" "}
+      <div className="bg-white min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          <div className="md:flex justify-center items-center">
+            <div className="md:w-4/5 pr-8">
+              <h1 className="text-3xl font-bold mb-2">{coffeeShop.name}</h1>
+                <p className="text-gray-700 font-semibold">
+                  {coffeeShop.cityState}
+                </p>
+              <h5 className="text-gray-600 pb-4 font-semibold ">Written by {coffeeShop.writer}</h5>
+              <img
+                src={coffeeShop.image}
+                alt={coffeeShop.name}
+                className="w-full lg:w-4/6 rounded-lg  object-center"
+              />
+              <div className="mt-6">
+                <p className="text-gray-700 my-2">{coffeeShop.description}</p>
+                <p className="text-gray-700">
+                  <strong>Featured Items:</strong> {coffeeShop.featuredItems}
+                </p>
+                <p className="text-gray-700">
+                  <strong>Rating:</strong> {coffeeShop.rating}
+                </p>
+                {coffeeShop.website && (
+                  <p className="text-gray-700">
+                    <strong>Website:</strong>{" "}
+                    <a
+                      href={coffeeShop.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {coffeeShop.website}
+                    </a>
+                  </p>
+                )}
                 <a
-                  href={coffeeShop.website}
+                  href={googleMapsLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className=" text-bodyColor underline hover:text-blue-600 "
                 >
-                  {coffeeShop.website}
+                  <strong>View Location</strong>
                 </a>
-              </p>
-            )}
-            <a
-              href={googleMapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              View Location
-            </a>
-            <hr className="my-4 border-t border-gray-300" />
-            <Edit coffeeShop={coffeeShop} handleEdit={handleEdit} />
-          </div>
-          <div className="mt-4 md:mt-0 md:w-1/4">
-            <button
-              onClick={handleDelete}
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-            >
-              Delete
-            </button>
+              </div>
+              <hr className="my-6 border-t border-gray-300" />
+              <div className="text-center mb-8 flex flex-col m-4">
+               <div>
+                <Edit shop={coffeeShop}
+                  onEditSubmit={handleEditSubmit}
+                />
+                </div>
+                <div className='py-2'> 
+                <button
+                  onClick={handleDelete}
+                  className=" text-bodyColor hover:underline px-2 py-2"
+                >
+                  Delete
+                </button>
+                <button>
+                  <Link to="/coffeeshops" className="text-bodyColor hover:underline px-2 py-2">
+                    Back
+                  </Link>
+                </button>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
-      </div>
-      <div className="mt-4 text-center">
-        <Link
-          to="/coffeeshops"
-          className="text-blue-600 hover:underline"
-        >
-          Back
-        </Link>
+
       </div>
     </>
   );

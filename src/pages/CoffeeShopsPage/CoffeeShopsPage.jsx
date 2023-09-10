@@ -20,37 +20,35 @@ export default function CoffeeShopsPage() {
     <>
       <div>
         <main className="bg-gray-100 min-h-screen">
-          <h2 className="text-2xl font-bold mt-8 pl-4 md:pl-8">Coffee Shop Listings</h2>
-          <div className="container mx-auto px-4 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {coffeeShop.map((shop) => {
-              return (
-                <div key={shop._id} className="mb-4 h-full">
-                  <div className="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                    <img
-                      src={shop.image}
-                      alt={shop.name}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-4 h-full">
-                      <h3 className="text-xl font-semibold">{shop.name}</h3>
-                      <p className="text-gray-700">
-                        By: {shop.writer}
-                        <br />
-                        {shop.cityState}
-                        <br />
-                        Rating: {shop.rating}
-                      </p>
-                      <Link
-                        to={`/details/${shop._id}`}
-                        className="mt-2 inline-block px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 rounded-md transition duration-300 ease-in-out"
-                      >
-                        Details
-                      </Link>
+          <h2 className="text-xl md:text-2xl font-bold px-4 md:px-8 py-4 text-center">
+            Coffee Shop Listings
+          </h2>
+          <div className="px-4 md:px-8 py-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {coffeeShop.map((shop) => (
+                <Link to={`/details/${shop._id}`} className="group" key={shop._id}>
+                  <div className="mb-4 transition-transform transform-gpu group-hover:scale-105">
+                    <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+                      <img
+                        src={shop.image}
+                        alt={shop.name}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="p-4">
+                        <h3 className="text-xl font-semibold">{shop.name}</h3>
+                        <p className="text-gray-700">
+                          {shop.cityState}
+                          <br />
+                          By: {shop.writer}
+                          <br />
+                          Rating: {shop.rating}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
+                </Link>
+              ))}
+            </div>
           </div>
         </main>
         <footer className="py-4 bg-gray-800 text-white text-center">
