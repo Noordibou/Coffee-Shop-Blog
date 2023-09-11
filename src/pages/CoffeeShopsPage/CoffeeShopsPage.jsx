@@ -51,11 +51,7 @@ export default function CoffeeShopsPage() {
             </div>
           </div>
         </main>
-        <footer className="py-4 bg-gray-800 text-white text-center">
-          <div className="container mx-auto px-4">
-            <p>&copy; 2023 Caffeine Chronicles</p>
-          </div>
-        </footer>
+        
       </div>
     </>
   );

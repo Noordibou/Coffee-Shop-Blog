@@ -45,7 +45,7 @@ export default function CoffeeShopDetailPage() {
 
   return (
     <>
-      <div className="bg-white min-h-screen">
+      <div className=" min-h-screen">
         <div className="container mx-auto px-4 py-8">
           <div className="md:flex justify-center items-center">
             <div className="md:w-4/5 pr-8">

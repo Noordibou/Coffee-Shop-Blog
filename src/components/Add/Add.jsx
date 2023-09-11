@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Add = (props) => {
+const Add = () => {
     const [shop, setShop] = useState({
         name: '',
         location: '',
@@ -32,10 +32,10 @@ const Add = (props) => {
     };
 
     return (
-        <div className="p-4">
+        <div className="pt-4 min-h-screen">
             <h1 className="text-2xl font-bold mb-4">Create A Coffee Shop Listing</h1>
 
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Name:
@@ -44,7 +44,7 @@ const Add = (props) => {
                         type="text"
                         name="name"
                         id="name"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring "
                         onChange={handleChange}
                     />
                 </div>
@@ -56,7 +56,7 @@ const Add = (props) => {
                         type="text"
                         name="writer"
                         id="writer"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -67,7 +67,7 @@ const Add = (props) => {
                     <textarea
                         name="description"
                         id="description"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     ></textarea>
                 </div>
@@ -79,7 +79,7 @@ const Add = (props) => {
                         type="text"
                         name="featuredItems"
                         id="featuredItems"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -91,7 +91,7 @@ const Add = (props) => {
                         type="text"
                         name="website"
                         id="website"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -103,7 +103,7 @@ const Add = (props) => {
                         type="number"
                         name="rating"
                         id="rating"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -115,7 +115,7 @@ const Add = (props) => {
                         type="text"
                         name="cityState"
                         id="cityState"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -127,7 +127,7 @@ const Add = (props) => {
                         type="text"
                         name="location"
                         id="location"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -139,13 +139,13 @@ const Add = (props) => {
                         type="text"
                         name="image"
                         id="image"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  bg-indigo-50"
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className="col-span-2">
-                    <button type="submit" className="px-4 py-2 bg-bodyColor text-indigo-50 rounded-md hover:bg-gray-600">
+                    <button type="submit" className="px-4 py-2 bg-bodyColor text-bgColor rounded-md hover:bg-gray-600">
                         Submit
                     </button>
                 </div>
