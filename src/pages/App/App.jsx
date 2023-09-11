@@ -9,7 +9,7 @@ import './App.css';
 
 export default function App() {
   return (
-    <main className=" ">
+    <main className=" font-titleFont ">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
