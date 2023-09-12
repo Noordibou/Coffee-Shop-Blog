@@ -55,10 +55,10 @@ export default function Navbar() {
         
         <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-2'>
           <li>
-            <Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-mainColor'>Coffee Shops</Link>
+            <Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Coffee Shops</Link>
           </li>
           <li>
-            <Link to='/createCS' className='cursor-pointer font-titleFont transition-all hover:text-mainColor'>Create a Listing</Link>  
+            <Link to='/createCS' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Create a Listing</Link>  
           </li>
         </ul>
       </div>

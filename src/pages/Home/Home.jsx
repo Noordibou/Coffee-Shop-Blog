@@ -22,7 +22,7 @@ export default function CoffeeShopsPage() {
                 <div className="mx-auto flex flex-col justify-center max-w-7xl px-8 md:px-6 lg:w-4/5  ">
                     <div className='px-12'>
                         <h1 className="text-xl md:text-2xl text-center font-semibold my-4 ">
-                            Welcome to Caffeine Chronicles, the ultimate app for all coffee enthusiasts and cafe connoisseurs!
+                        Welcome to the Ultimate Coffee Adventure!
                         </h1>
                     </div>
 
@@ -35,19 +35,14 @@ export default function CoffeeShopsPage() {
                     </div>
                     <div className=''>
                         <div className="flex flex-row">
-                            <p className="mt-2 text-gray-700 text-center md:text-base text-sm md:text-left md:basis-1/2">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs! Our
-                                platform is dedicated to providing comprehensive
-                                reviews and insights about coffee shops from around
-                                the world.
+                            <p className="mt-2 text-gray-700 text-center md:text-base text-sm md:text-left md:basis-2/3">
+                            Are you a fellow coffee enthusiast? Do you find joy in the comforting aroma of freshly roasted beans and the soothing embrace of a warm cup of java? Well, you're in the right place! Join me on a journey through some of the coziest, trendiest, and most delightful coffee shops from around the world. I'm your guide to all things coffee, and I can't wait to share my caffeinated escapades with you.
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
-                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-right md:basis-1/3">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs!
+                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-right font-semibold md:basis-1/3">
+                            Uncover Hidden Coffee Gems
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-end">
@@ -58,19 +53,14 @@ export default function CoffeeShopsPage() {
                             />
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
-                            <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-1/2">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs! Our
-                                platform is dedicated to providing comprehensive
-                                reviews and insights about coffee shops from around
-                                the world.
+                            <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-2/3">
+                            As your coffee-sipping travel companion, I'm on a mission to unearth those hidden coffee gems that are often overlooked. From hole-in-the-wall treasures to the hippest espresso bars in town, I'll take you on a virtual tour of these caffeine havens. Together, we'll explore the unique stories behind each brew and the passionate baristas who craft them.
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-start justify-center">
-                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-left md:basis-1/3">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs!
+                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-left md:basis-1/3">
+                            Brew-tiful Experiences Await
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-start">
@@ -81,19 +71,14 @@ export default function CoffeeShopsPage() {
                             />
                         </div>
                         <div className="flex flex-row md:justify-start justify-center">
-                            <p className="text-gray-700 text-center md:text-base text-sm md:text-left md:basis-1/2">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs! Our
-                                platform is dedicated to providing comprehensive
-                                reviews and insights about coffee shops from around
-                                the world.
+                            <p className="text-gray-700 text-center md:text-base text-sm md:text-left md:basis-2/3">
+                            Get ready to embark on a journey of aroma, flavor, and ambiance. From the artisanal roasters who take pride in their craft to the cozy corners that offer refuge from the daily grind, there's a brew-tiful experience waiting for you at every corner. So, grab your favorite mug, get comfy, and let's start this delightful coffee adventure together!
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
-                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-right md:basis-1/3">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs!
+                            <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-right md:basis-1/3">
+                            Stay Caffeinated and Curious
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-end">
@@ -103,13 +88,9 @@ export default function CoffeeShopsPage() {
                                 className="w-full md:w-3/5 max-w-2xl md:h-[22rem] object-cover"
                             />
                         </div>
-                        <div className="flex flex-row md:justify-end justify-center pt-8">
-                            <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-1/2">
-                                Welcome to Caffeine Chronicles, the ultimate app for
-                                all coffee enthusiasts and cafe connoisseurs! Our
-                                platform is dedicated to providing comprehensive
-                                reviews and insights about coffee shops from around
-                                the world.
+                        <div className="flex flex-row md:justify-end justify-center pb-4">
+                            <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-2/3">
+                            Don't forget to stay caffeinated and curious as we dive into the world of coffee. Whether you're a seasoned coffee aficionado or a newbie looking to explore the depths of the coffee universe, there's something here for everyone. So, let's raise our cups to endless discoveries and unforgettable coffee moments. Cheers!
 
                             </p>
                         </div>
