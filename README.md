@@ -1,6 +1,8 @@
 #  Caffeine Chronicles
 Welcome to Caffeine Chronicles, your go-to coffee shop blog app designed to elevate your coffee experience in the heart of the city! Whether you're a coffee connoisseur or just seeking your daily caffeine fix, Caffeine Chronicles combines the power of MongoDB, React, Express, NodeJS, HTML, CSS, and Tailwind CSS to create a seamless and user-friendly platform for discovering, updating, and enjoying your favorite coffee shops in downtown.
 
+![main](public/cc-main.png) ![index](public/cc-index.png) ![detail](public/cc-detail.png) ![addNew](public/cc-create.png)
+
 # Key Features
 
 - `Coffee Shop Discovery:` Caffeine Chronicles offers a curated selection of coffee shops, making it easy for coffee enthusiasts to explore new places and hidden gems. Discover the perfect spot to meet friends, study, or simply unwind.
