@@ -33,7 +33,7 @@ const Add = () => {
 
     return (
         <div className="pt-4 min-h-screen">
-            <h1 className="text-2xl font-bold mb-4">Create A Coffee Shop Listing</h1>
+            <h1 className="text-2xl font-bold mb-4 px-4">Create A Coffee Shop Listing</h1>
 
             <form className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" onSubmit={handleSubmit}>
                 <div>
