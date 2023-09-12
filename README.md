@@ -20,11 +20,11 @@ Screenshots
 
 
 ## Technologies used
-MongoDB, React, Express, NodeJS, HTML, CSS and Bootstrap
+MongoDB, React, Express, NodeJS, HTML, CSS and tailwind
 
-## Stretch Goals
+## Future Goals
 
-Add user login page
+Add user features
 
 Add sorting functionality to sort by name/description and location
 
