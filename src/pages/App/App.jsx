@@ -5,7 +5,6 @@ import CoffeeShopsPage from '../CoffeeShopsPage/CoffeeShopsPage';
 import CoffeeShopDetailPage from '../CoffeeShopDetailPage/CoffeeShopDetailPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Home from '../Home/Home';
-import './App.css';
 import Footer from '../Footer/Footer';
 
 

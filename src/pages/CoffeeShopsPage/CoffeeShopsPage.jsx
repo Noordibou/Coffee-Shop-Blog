@@ -7,7 +7,7 @@ export default function CoffeeShopsPage() {
 
   const getCoffeeShop = () => {
     axios
-      .get('https://coffee-shop-blog.vercel.app/coffeeshops')
+      .get('/coffeeshops')
       .then((response) => setCoffeeShop(response.data))
       .catch((error) => console.log(error));
   };
