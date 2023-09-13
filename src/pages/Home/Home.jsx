@@ -114,7 +114,7 @@ export default function CoffeeShopsPage() {
                     <div className="px-4 md:px-8 py-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                             {coffeeShop.map((shop) => (
-                                <Link to={`/details/${shop._id}`} className="group" key={shop._id}>
+                                <Link to={`https://coffee-shop-blog.vercel.app/details/${shop._id}`} className="group" key={shop._id}>
                                     <div className="h-full mb-4 transition-transform transform-gpu group-hover:scale-105">
                                         <div className="bg-white h-full rounded overflow-hidden shadow-lg">
                                             <img
