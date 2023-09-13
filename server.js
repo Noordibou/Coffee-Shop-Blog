@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
 const CoffeeShop = require('./models/coffeeShop')
 const favicon = require('serve-favicon');
 const logger = require('morgan');
