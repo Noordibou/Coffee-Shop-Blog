@@ -12,7 +12,7 @@ export default function CoffeeShopDetailPage() {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:3000/coffeeshops/${id}/`)
+      .delete(`/coffeeshops/${id}/`)
       .then(() => navigate('/coffeeshops'))
       .catch((err) => console.log(err));
   };
@@ -26,7 +26,7 @@ export default function CoffeeShopDetailPage() {
   
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/coffeeshops/${id}/`)
+      .get(`/coffeeshops/${id}/`)
       .then((res) => setCoffeeShop(res.data))
       .catch((err) => console.log(err));
   }, [id]);

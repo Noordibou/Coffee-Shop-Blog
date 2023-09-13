@@ -7,7 +7,7 @@ export default function CoffeeShopsPage() {
 
   const getCoffeeShop = () => {
     axios
-      .get('http://localhost:3000/coffeeshops')
+      .get('/coffeeshops')
       .then((response) => setCoffeeShop(response.data))
       .catch((error) => console.log(error));
   };

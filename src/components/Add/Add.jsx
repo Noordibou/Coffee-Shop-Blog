@@ -24,7 +24,7 @@ const Add = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios
-            .post('http://localhost:3000/coffeeshops', shop)
+            .post('/coffeeshops', shop)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
 
