@@ -3,7 +3,6 @@ const path = require('path');
 const CoffeeShop = require('./models/coffeeShop')
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const methodOverride = require('method-override');
 
 require('dotenv').config();
 // Connect to the database
@@ -18,7 +17,6 @@ app.use(express.json());
 // to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
-app.use(methodOverride('_method'));
 
 
 // Put API routes here, before the "catch all" route
@@ -61,14 +59,8 @@ app.get('/*', function(req, res) {
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
+const port = process.env.PORT || 3001;
 
-
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+app.listen(port, function() {
+ console.log(`Express app running on port ${port}`)
 });
