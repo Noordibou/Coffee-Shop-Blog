@@ -7,7 +7,7 @@ export default function CoffeeShopsPage() {
 
     const getCoffeeShop = () => {
         axios
-            .get('https://coffee-shop-blog.vercel.app/coffeeshops')
+            .get('http://localhost:3000/coffeeshops')
             .then((response) => setCoffeeShop(response.data))
             .catch((error) => console.log(error));
     };
@@ -22,7 +22,7 @@ export default function CoffeeShopsPage() {
                 <div className="mx-auto flex flex-col justify-center max-w-7xl px-8 md:px-6 lg:w-4/5  ">
                     <div className='px-12'>
                         <h1 className="text-xl md:text-2xl text-center font-semibold my-4 ">
-                            Welcome to the Ultimate Coffee Adventure!
+                        Welcome to the Ultimate Coffee Adventure!
                         </h1>
                     </div>
 
@@ -36,13 +36,13 @@ export default function CoffeeShopsPage() {
                     <div className=''>
                         <div className="flex flex-row">
                             <p className="mt-2 text-gray-700 text-center md:text-base text-sm md:text-left md:basis-2/3">
-                                Are you a fellow coffee enthusiast? Do you find joy in the comforting aroma of freshly roasted beans and the soothing embrace of a warm cup of java? Well, you're in the right place! Join me on a journey through some of the coziest, trendiest, and most delightful coffee shops from around the world. I'm your guide to all things coffee, and I can't wait to share my caffeinated escapades with you.
+                            Are you a fellow coffee enthusiast? Do you find joy in the comforting aroma of freshly roasted beans and the soothing embrace of a warm cup of java? Well, you're in the right place! Join me on a journey through some of the coziest, trendiest, and most delightful coffee shops from around the world. I'm your guide to all things coffee, and I can't wait to share my caffeinated escapades with you.
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-right font-semibold md:basis-1/3">
-                                Uncover Hidden Coffee Gems
+                            Uncover Hidden Coffee Gems
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-end">
@@ -54,13 +54,13 @@ export default function CoffeeShopsPage() {
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
                             <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-2/3">
-                                As your coffee-sipping travel companion, I'm on a mission to unearth those hidden coffee gems that are often overlooked. From hole-in-the-wall treasures to the hippest espresso bars in town, I'll take you on a virtual tour of these caffeine havens. Together, we'll explore the unique stories behind each brew and the passionate baristas who craft them.
+                            As your coffee-sipping travel companion, I'm on a mission to unearth those hidden coffee gems that are often overlooked. From hole-in-the-wall treasures to the hippest espresso bars in town, I'll take you on a virtual tour of these caffeine havens. Together, we'll explore the unique stories behind each brew and the passionate baristas who craft them.
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-start justify-center">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-left md:basis-1/3">
-                                Brew-tiful Experiences Await
+                            Brew-tiful Experiences Await
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-start">
@@ -72,13 +72,13 @@ export default function CoffeeShopsPage() {
                         </div>
                         <div className="flex flex-row md:justify-start justify-center">
                             <p className="text-gray-700 text-center md:text-base text-sm md:text-left md:basis-2/3">
-                                Get ready to embark on a journey of aroma, flavor, and ambiance. From the artisanal roasters who take pride in their craft to the cozy corners that offer refuge from the daily grind, there's a brew-tiful experience waiting for you at every corner. So, grab your favorite mug, get comfy, and let's start this delightful coffee adventure together!
+                            Get ready to embark on a journey of aroma, flavor, and ambiance. From the artisanal roasters who take pride in their craft to the cozy corners that offer refuge from the daily grind, there's a brew-tiful experience waiting for you at every corner. So, grab your favorite mug, get comfy, and let's start this delightful coffee adventure together!
 
                             </p>
                         </div>
                         <div className="flex flex-row md:justify-end justify-center">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-right md:basis-1/3">
-                                Stay Caffeinated and Curious
+                            Stay Caffeinated and Curious
                             </p>
                         </div>
                         <div className="py-4 flex flex-row justify-center md:justify-end">
@@ -90,7 +90,7 @@ export default function CoffeeShopsPage() {
                         </div>
                         <div className="flex flex-row md:justify-end justify-center pb-4">
                             <p className="text-gray-700 text-center md:text-base text-sm md:text-right md:basis-2/3">
-                                Don't forget to stay caffeinated and curious as we dive into the world of coffee. Whether you're a seasoned coffee aficionado or a newbie looking to explore the depths of the coffee universe, there's something here for everyone. So, let's raise our cups to endless discoveries and unforgettable coffee moments. Cheers!
+                            Don't forget to stay caffeinated and curious as we dive into the world of coffee. Whether you're a seasoned coffee aficionado or a newbie looking to explore the depths of the coffee universe, there's something here for everyone. So, let's raise our cups to endless discoveries and unforgettable coffee moments. Cheers!
 
                             </p>
                         </div>
@@ -113,32 +113,32 @@ export default function CoffeeShopsPage() {
                     </h2>
                     <div className="px-4 md:px-8 py-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                            {Array.isArray(coffeeShop) && coffeeShop.length > 0 ? (
-                                coffeeShop.map((shop) => (
-                                    <Link to={`/details/${shop._id}`} className="group" key={shop._id}>
-                                        <div className="h-full mb-4 transition-transform transform-gpu group-hover:scale-105">
-                                            <div className="bg-white h-full rounded overflow-hidden shadow-lg">
-                                                <img
-                                                    src={shop.image}
-                                                    alt={shop.name}
-                                                    className="w-full h-48 object-cover"
-                                                />
-                                                <div className="px-6 py-4 h-full">
-                                                    <h3 className="font-bold text-xl mb-2 lg:h-12">{shop.name}</h3>
-                                                    <p className="text-gray-700 text-base lg:h-14">
-                                                        {shop.cityState} <br />
-                                                        By: {shop.writer} <br />
-                                                        Rating: {shop.rating}
-                                                    </p>
-                                                </div>
+                        {Array.isArray(coffeeShop) && coffeeShop.length > 0 ? (
+                        coffeeShop.map((shop) => (
+                            <Link to={`/details/${shop._id}`} className="group" key={shop._id}>
+                                    <div className="h-full mb-4 transition-transform transform-gpu group-hover:scale-105">
+                                        <div className="bg-white h-full rounded overflow-hidden shadow-lg">
+                                            <img
+                                                src={shop.image}
+                                                alt={shop.name}
+                                                className="w-full h-48 object-cover"
+                                            />
+                                            <div className="px-6 py-4 h-full">
+                                                <h3 className="font-bold text-xl mb-2 lg:h-12">{shop.name}</h3>
+                                                <p className="text-gray-700 text-base lg:h-14">
+                                                    {shop.cityState} <br />
+                                                    By: {shop.writer} <br />
+                                                    Rating: {shop.rating}
+                                                </p>
                                             </div>
                                         </div>
-                                    </Link>
-                                ))
-                            ) : (
-                                <p>No coffee shops available.</p>
-                            )}
-                        </div>
+                                    </div>
+                                </Link>
+                             ))
+                             ) : (
+                                 <p>No coffee shops available.</p>
+                             )}
+                         </div>
                     </div>
                 </div>
             </main>
