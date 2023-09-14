@@ -54,9 +54,9 @@ app.delete('/coffeeshops/:id', (req, res)=>{
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-// app.get('/*', function(req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/*', function(req, res) {
   res.send('Server is running')
