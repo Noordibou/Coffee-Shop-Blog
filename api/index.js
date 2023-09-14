@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
-app.listen('https://coffee-shop-blog.vercel.app/', ()=>{
+app.listen(3001, ()=>{
   console.log('listening...');
 });
 
