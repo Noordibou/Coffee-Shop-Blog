@@ -63,10 +63,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
-app.get('/', function(req, res) {
-  res.send('Server is running')
-})
-
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
 const port = process.env.PORT || 3001;
