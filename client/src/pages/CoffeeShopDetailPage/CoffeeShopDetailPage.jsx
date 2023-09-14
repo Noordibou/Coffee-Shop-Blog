@@ -12,7 +12,7 @@ export default function CoffeeShopDetailPage() {
 
   const handleDelete = () => {
     axios
-      .delete(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`)
+      .delete(`http://localhost:3000/coffeeshops/${id}/`)
       .then(() => navigate('/coffeeshops'))
       .catch((err) => console.log(err));
   };
@@ -26,7 +26,7 @@ export default function CoffeeShopDetailPage() {
   
   useEffect(() => {
     axios
-      .get(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`)
+      .get(`http://localhost:3000/coffeeshops/${id}/`)
       .then((res) => setCoffeeShop(res.data))
       .catch((err) => console.log(err));
   }, [id]);
