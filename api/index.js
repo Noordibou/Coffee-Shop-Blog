@@ -18,10 +18,10 @@ app.use(cors())
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
-app.use(favicon(path.join(__dirname, '..', 'client', 'build','favicon.ico')));
+app.use(favicon(path.join(__dirname, '.', 'client', 'build', 'static','favicon.ico')));
 // app.use(express.static(path.join(__dirname, 'build')));
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+app.use(express.static(path.join(__dirname, '.', 'client', 'build')));
 
 
 
@@ -60,7 +60,7 @@ app.delete('/coffeeshops/:id', (req, res)=>{
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '.', 'client', 'build', 'index.html'));
 });
 
 // Configure to use port 3001 instead of 3000 during
