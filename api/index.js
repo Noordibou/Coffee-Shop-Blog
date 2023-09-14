@@ -60,8 +60,7 @@ app.delete('/coffeeshops/:id', (req, res)=>{
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function(req, res) {
-  const indexPath = path.resolve(__dirname, '..', 'client', 'build', 'index.html');
-  res.sendFile(indexPath);
+  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
 app.get('/', function(req, res) {
@@ -70,7 +69,7 @@ app.get('/', function(req, res) {
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
-app.listen(3001, ()=>{
+app.listen('https://coffee-shop-blog.vercel.app/', ()=>{
   console.log('listening...');
 });
 
