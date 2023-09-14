@@ -28,10 +28,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "nodemon index",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "nodemon index"
   },
   "eslintConfig": {
     "extends": [
