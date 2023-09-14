@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use('/*', function(req, res) {
   res.send('Server is running')
 })
@@ -56,9 +56,9 @@ app.delete('/coffeeshops/:id', (req, res)=>{
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/*', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
