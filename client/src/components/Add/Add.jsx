@@ -24,7 +24,7 @@ const Add = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios
-            .post('/coffeeshops', shop)
+            .post('https://coffee-shop-blog-server.vercel.app//coffeeshops', shop)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
 
