@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const CoffeeShop = require('./models/coffeeShop');
-const mongoose = require('mongoose');
 
 
 require('dotenv').config();
-
+// Connect to the database
+require('./config/database');
+   
 const app = express();
    
 app.use(logger('dev'));
@@ -14,7 +15,7 @@ app.use(express.json());
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 // Put API routes here, before the "catch all" route
@@ -51,11 +52,18 @@ app.delete('/coffeeshops/:id', (req, res)=>{
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.listen(3001, ()=>{
-  console.log('listening...');
-});
+// app.get('/*', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
-mongoose.connect(process.env.DATABASE_URL)
-mongoose.connection.once('open', ()=>{
-  console.log('connected to mongod...');
+app.get('/*', function(req, res) {
+  res.send('server')
+})
+
+// Configure to use port 3001 instead of 3000 during
+// development to avoid collision with React's dev server
+const port = process.env.PORT || 3001;
+
+app.listen(port, function() {
+ console.log(`Express app running on port ${port}`)
 });
