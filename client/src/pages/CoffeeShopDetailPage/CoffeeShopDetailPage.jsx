@@ -18,7 +18,7 @@ export default function CoffeeShopDetailPage() {
   };
 
   const handleEditSubmit = (editedShop) => {
-    axios.put(`/coffeeshops/${id}`, editedShop)
+    axios.put(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}`, editedShop)
       .then(res => {
         setCoffeeShop(res.data);
       })
