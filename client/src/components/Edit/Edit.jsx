@@ -16,7 +16,7 @@ const Edit = ({ shop, onEditSubmit }) => {
     e.preventDefault();
     try {
      
-      const response = await fetch(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${editedShop.id}`, {
+      const response = await fetch(`https://coffee-shop-blog.vercel.app/coffeeshops/${editedShop.id}`, {
         method: 'PUT', 
         headers: {
           'Content-Type': 'application/json',
