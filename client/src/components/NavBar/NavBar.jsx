@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
       <div className='flex md:justify-around justify-between px-4 py-2'>
-        <h2 className='text-3xl font-semibold font-titleFont text-bodyColor px-2'>
+        <h2 className='md:text-3xl text-xl pt-2 font-semibold font-titleFont text-bodyColor px-2'>
           <Link to='/'>Caffeine Chronicles</Link> 
         </h2>
         <div ref={menuRef}>
@@ -53,9 +53,9 @@ export default function Navbar() {
           )}
         </div>
         
-        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-2'>
+        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-2 '>
           <li>
-            <Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Coffee Shops</Link>
+            <Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Coffee Shops</Link>
           </li>
           <li>
             <Link to='/createCS' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Create a Listing</Link>  

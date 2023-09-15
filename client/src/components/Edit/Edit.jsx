@@ -23,14 +23,14 @@ const Edit = ({ shop, onEditSubmit }) => {
     <>
       <button
         onClick={() => setIsFormOpen(!isFormOpen)} 
-        className="text-bodyColor hover:underline cursor-pointer"
+        className="text-bodyColor cursor-pointer"
       >
         {isFormOpen ? 'Close Edit Form' : 'Edit Coffee Shop'}
       </button>
 
       {isFormOpen && (
             <div className="p-2 border rounded-lg border-gray-300">
-                <summary className="text-lg font-semibold">Edit Coffee Shop</summary>
+                <summary className="text-lg font-semibold text-bodyColor ">Edit Coffee Shop</summary>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-4 space-y-4">
                         <input
@@ -39,7 +39,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.name}
                             name="name"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -47,7 +47,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.writer}
                             name="writer"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <textarea
                             type="text"
@@ -55,7 +55,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.description}
                             name="description"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 h-[200px] border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 h-[200px] border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -63,7 +63,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.featuredItems}
                             name="featuredItems"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -71,7 +71,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.website}
                             name="website"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -79,7 +79,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.cityState}
                             name="cityState"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -87,7 +87,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.location}
                             name="location"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="number"
@@ -95,7 +95,7 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.rating}
                             name="rating"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="text"
@@ -103,12 +103,12 @@ const Edit = ({ shop, onEditSubmit }) => {
                             value={editedShop.image}
                             name="image"
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring focus:ring-indigo-200"
+                            className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />
                         <input
                             type="submit"
                             value="Submit"
-                            className="px-4 py-2 bg-bodyColor text-white rounded-md hover:bg-gray-600 cursor-pointer"
+                            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-bodyColor cursor-pointer"
                         />
                     </div>
                 </form>

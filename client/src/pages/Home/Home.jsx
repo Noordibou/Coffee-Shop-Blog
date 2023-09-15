@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import StarRating from '../../components/StarRating/StarRating';
 
 export default function CoffeeShopsPage() {
     const [coffeeShop, setCoffeeShop] = useState([]);
 
     const getCoffeeShop = () => {
         axios
-            .get('https://coffee-shop-blog-server.vercel.app/coffeeshops')
+            .get('https://coffee-shop-blog.vercel.app/coffeeshops')
             .then((response) => setCoffeeShop(response.data))
             .catch((error) => console.log(error));
     };
@@ -21,7 +22,7 @@ export default function CoffeeShopsPage() {
             <main >
                 <div className="mx-auto flex flex-col justify-center max-w-7xl px-8 md:px-6 lg:w-4/5  ">
                     <div className='px-12'>
-                        <h1 className="text-xl md:text-2xl text-center font-semibold my-4 ">
+                        <h1 className="text-lg md:text-2xl text-center font-semibold pt-4 ">
                         Welcome to the Ultimate Coffee Adventure!
                         </h1>
                     </div>
@@ -128,7 +129,7 @@ export default function CoffeeShopsPage() {
                                                 <p className="text-gray-700 text-base lg:h-14">
                                                     {shop.cityState} <br />
                                                     By: {shop.writer} <br />
-                                                    Rating: {shop.rating}
+                                                    <StarRating rating={shop.rating} />
                                                 </p>
                                             </div>
                                         </div>
