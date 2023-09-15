@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios to use it for making HTTP requests
 
-const Edit = ({ shop, onEditSubmit }) => {
+const Edit = ({ shop, handleEditSubmit }) => {
   const [editedShop, setEditedShop] = useState({});
-  const [isFormOpen, setIsFormOpen] = useState(false); 
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
-  onEditSubmit = async (editedShop) => {
+  // Move the onEditSubmit function inside the component
+  const handleEditSubmit = async () => {
     try {
+      // Replace ${id} with the actual ID of the shop you want to edit
       const response = await axios.post(
-        'https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/',
+        `https://coffee-shop-blog-server.vercel.app/coffeeshops/${shop.id}/`,
         editedShop
       );
+
+      // Handle the response as needed (e.g., show a success message)
+      console.log('Shop edited successfully:', response.data);
     } catch (error) {
-        
-        console.error(error);
-      }
-    }; 
+      // Handle errors (e.g., display an error message)
+      console.error('Error editing shop:', error);
+    }
+  };
+
   useEffect(() => {
     setEditedShop(shop);
   }, [shop]);
@@ -25,8 +32,8 @@ const Edit = ({ shop, onEditSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onEditSubmit(editedShop);
-    setIsFormOpen(false); 
+    handleEditSubmit(); // Call the handleEditSubmit function
+    setIsFormOpen(false);
   };
 
   return (
