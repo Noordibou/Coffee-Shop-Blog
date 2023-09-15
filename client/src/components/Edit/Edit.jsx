@@ -12,10 +12,27 @@ const Edit = ({ shop, onEditSubmit }) => {
     setEditedShop({ ...editedShop, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onEditSubmit(editedShop);
-    setIsFormOpen(false); 
+    try {
+     
+      const response = await fetch(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${editedShop.id}`, {
+        method: 'PUT', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedShop),
+      });
+
+      if (response.ok) {
+        onEditSubmit(editedShop);
+        setIsFormOpen(false);
+      } else {
+        console.error('Update failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
