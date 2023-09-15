@@ -7,7 +7,7 @@ export default function CoffeeShopsPage() {
 
     const getCoffeeShop = () => {
         axios
-            .get('https://coffee-shop-blog-server.vercel.app/coffeeshops')
+            .get('https://coffee-shop-blog.vercel.app/coffeeshops')
             .then((response) => setCoffeeShop(response.data))
             .catch((error) => console.log(error));
     };
@@ -40,7 +40,7 @@ export default function CoffeeShopsPage() {
 
                             </p>
                         </div>
-                        <div className="flex flex-row md:justify-end justify-center">
+                        <div className="flex flex-row md:justify-end justify-center pt-4 md:pt-0">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm md:text-right font-semibold md:basis-1/3">
                             Uncover Hidden Coffee Gems
                             </p>
@@ -58,12 +58,12 @@ export default function CoffeeShopsPage() {
 
                             </p>
                         </div>
-                        <div className="flex flex-row md:justify-start justify-center">
+                        <div className="flex flex-row md:justify-start justify-center pt-4 md:pt-0">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-left md:basis-1/3">
                             Brew-tiful Experiences Await
                             </p>
                         </div>
-                        <div className="py-4 flex flex-row justify-center md:justify-start">
+                        <div className="py-4 flex flex-row justify-center md:justify-start ">
                             <img
                                 src="https://images.unsplash.com/photo-1526547319484-63dce467060b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                                 alt="Coffee Shops"
@@ -76,7 +76,7 @@ export default function CoffeeShopsPage() {
 
                             </p>
                         </div>
-                        <div className="flex flex-row md:justify-end justify-center">
+                        <div className="flex flex-row md:justify-end justify-center pt-4 md:pt-0">
                             <p className="md:mt-2 text-gray-700 text-center md:text-base text-sm font-semibold md:text-right md:basis-1/3">
                             Stay Caffeinated and Curious
                             </p>
