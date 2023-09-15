@@ -4,6 +4,17 @@ const Edit = ({ shop, onEditSubmit }) => {
   const [editedShop, setEditedShop] = useState({});
   const [isFormOpen, setIsFormOpen] = useState(false); 
 
+  onEditSubmit = async (editedShop) => {
+    try {
+      const response = await axios.post(
+        'https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/',
+        editedShop
+      );
+    } catch (error) {
+        
+        console.error(error);
+      }
+    }; 
   useEffect(() => {
     setEditedShop(shop);
   }, [shop]);
