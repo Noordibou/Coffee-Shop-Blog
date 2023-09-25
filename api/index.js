@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const CoffeeShop = require('./models/coffeeShop')
+const CoffeeShop = require('./models/CoffeeShop')
 const logger = require('morgan');
 const cors = require('cors')
 const app = express();
