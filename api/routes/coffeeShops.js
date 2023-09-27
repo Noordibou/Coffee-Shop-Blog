@@ -1,65 +1,31 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/User')
-const bcrypt = require('bcrypt')
 const CoffeeShop = require('../models/CoffeeShop')
-const Comment = require('../models/Comment')
 const verifyToken = require('../token')
 
-//CREATE
-router.post("/create", verifyToken, async (req, res) => {
-    try {
-        const newPost = new CoffeeShop(req.body)
-        // console.log(req.body)
-        const savedPost = await newPost.save()
 
-        res.status(200).json(savedPost)
-    }
-    catch (err) {
+router.post('/create', verifyToken, (req, res) => {
+    CoffeeShop.create(req.body)
+    .then((createdShop) => {
+        res.json(createdShop)
+    })
+});
 
-        res.status(500).json(err)
-    }
+router.put('/:id', verifyToken, (req, res) => {
+    CoffeeShop.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((updatedShop) => res.json(updatedShop))
+});
 
-})
+router.delete('/:id', verifyToken, (req, res) => {
+    CoffeeShop.findByIdAndDelete(req.params.id)
+    .then((deletedShop) => res.json(deletedShop))
+});
 
-//UPDATE
-router.put("/:id", verifyToken, async (req, res) => {
-    try {
+router.get('/:id', (req, res) => {
+    CoffeeShop.findById(req.params.id)
+    .then((foundShop) => res.json(foundShop))
+});
 
-        const updatedPost = await CoffeeShop.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-        res.status(200).json(updatedPost)
-
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-
-//DELETE
-router.delete("/:id", verifyToken, async (req, res) => {
-    try {
-        await CoffeeShop.findByIdAndDelete(req.params.id)
-        await Comment.deleteMany({ coffeeShopId: req.params.id })
-        res.status(200).json("Post has been deleted!")
-
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-
-//GET POST DETAILS
-router.get("/:id", async (req, res) => {
-    try {
-        const post = await CoffeeShop.findById(req.params.id)
-        res.status(200).json(post)
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
 
 //GET POSTS
 router.get("/", async (req, res) => {

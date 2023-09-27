@@ -1,53 +1,26 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/User')
-const bcrypt = require('bcrypt')
-const CoffeeShop = require('../models/CoffeeShop')
 const Comment = require('../models/Comment')
 const verifyToken = require('../token')
 
 //CREATE
 router.post("/create", verifyToken, async (req, res) => {
-    try {
-        const newComment = new Comment(req.body)
-        const savedComment = await newComment.save()
-        res.status(200).json(savedComment)
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-
-})
+    Comment.create(req.body)
+    .then((createdComment) => {
+        res.json(createdComment)
+    })
+});
 
 //UPDATE
-router.put("/:id", verifyToken, async (req, res) => {
-    try {
+router.put('/:id', verifyToken, (req, res) => {
+    Comment.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((updatedComment) => res.json(updatedComment))
+});
 
-        const updatedComment = await Comment.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-        res.status(200).json(updatedComment)
-
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-
-//DELETE
-router.delete("/:id", verifyToken, async (req, res) => {
-    try {
-        await Comment.findByIdAndDelete(req.params.id)
-
-        res.status(200).json("Comment has been deleted!")
-
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-
-
+router.delete('/:id', verifyToken, (req, res) => {
+    Comment.findByIdAndDelete(req.params.id)
+    .then((deletedComment) => res.json(deletedComment))
+});
 
 //GET POST COMMENTS
 router.get("/coffeeshop/:coffeeShopId", async (req, res) => {
