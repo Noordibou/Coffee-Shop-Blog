@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CoffeeShopSchema = new Schema({
+const coffeeShopSchema = new Schema({
   name: { type: String, required: true },
   author: { type: String },
   description: { type: String, required: true },
@@ -14,7 +14,7 @@ const CoffeeShopSchema = new Schema({
   userId: { type: String },
 }, { timestamps: true })
 
-CoffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
+coffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
   if (locationString && locationString.startsWith('https://www.google.com/maps')) {
     return locationString;
   } else {
@@ -23,5 +23,5 @@ CoffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
   }
 };
 
-const CoffeeShop = mongoose.model('CoffeeShop', CoffeeShopSchema);
+const CoffeeShop = mongoose.model('CoffeeShop', coffeeShopSchema);
 module.exports = CoffeeShop;
