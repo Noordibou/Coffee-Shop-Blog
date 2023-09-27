@@ -14,7 +14,7 @@ const CoffeeShopSchema = new Schema({
   userId: { type: String },
 }, { timestamps: true })
 
-coffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
+CoffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
   if (locationString && locationString.startsWith('https://www.google.com/maps')) {
     return locationString;
   } else {
