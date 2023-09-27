@@ -56,7 +56,8 @@ const Add = () => {
             console.log(error);
         }
     };
-
+    console.log(user)
+    
 
     return (
         <div className="pt-4 min-h-screen px-8 max-w-5xl ">
