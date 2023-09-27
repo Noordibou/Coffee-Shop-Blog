@@ -42,12 +42,12 @@ app.use("/comments",commentRoute)
 //   },
 // });
 
-const upload=multer({storage:storage})
+// const upload=multer({storage:storage})
 
-app.post("/upload",upload.single("file"),(req,res)=>{
-  // console.log(req.body)
-  res.status(200).json("Image has been uploaded successfully!")
-})
+// app.post("/upload",upload.single("file"),(req,res)=>{
+//   // console.log(req.body)
+//   res.status(200).json("Image has been uploaded successfully!")
+// })
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

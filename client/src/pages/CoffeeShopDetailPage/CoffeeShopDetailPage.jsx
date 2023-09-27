@@ -7,6 +7,8 @@ import StarRating from '../../components/StarRating/StarRating';
 import { UserContext } from '../../context/UserContext';
 import { useContext } from 'react';
 import Comment from '../../components/Comment';
+import { AiFillDelete } from "react-icons/ai";
+import { IoArrowBackSharp } from "react-icons/io5";
 
 
 export default function CoffeeShopDetailPage() {
@@ -48,7 +50,7 @@ export default function CoffeeShopDetailPage() {
     e.preventDefault()
     try {
       await axios.post("http://localhost:3001/comments/create",
-        { comment: comment, author: user.username, coffeeShopId:id, userId: user._id },
+        { comment: comment, author: user.username, coffeeShopId: id, userId: user._id },
         { withCredentials: true })
 
       // fetchPostComments()
@@ -84,10 +86,25 @@ export default function CoffeeShopDetailPage() {
   return (
     <>
       <div className=" min-h-screen">
-        <div className="container mx-auto px-4 py-8">
+      <button className="mx-4 pt-4 ">
+          <Link
+            to="/coffeeshops"
+          >
+            <IoArrowBackSharp size={24} />
+          </Link>
+        </button>
+        <div className="container mx-auto px-6 py-4">
           <div className="md:flex justify-center items-center">
             <div className="md:w-4/5 pr-8">
+              <div className=" flex flex-row justify-between">
               <h1 className="text-3xl font-bold mb-2">{coffeeShop.name}</h1>
+        {user?._id === coffeeShop?.userId && <button
+                    onClick={handleDelete}
+                    className=" flex flex-row justify-between"
+                  >
+                    <AiFillDelete size={24} />
+                  </button>}
+                  </div>
               <p className="text-gray-700 font-semibold">
                 {coffeeShop.cityState}
               </p>
@@ -128,39 +145,21 @@ export default function CoffeeShopDetailPage() {
                 </a>
               </div>
               <hr className="my-6 border-t border-gray-300" />
+              
               <div className="text-center mb-8 flex flex-col  ">
                 {user?._id === coffeeShop?.userId && <div className='px-4 py-2 bg-gray-200 text-white hover:bg-gray-400 rounded-lg'>
                   <Edit shop={coffeeShop} onEditSubmit={handleEditSubmit} />
                 </div>}
-                <div className="py-4 space-x-4">
-                  {user?._id === coffeeShop?.userId && <button
-                    onClick={handleDelete}
-                    className="px-4 py-2 bg-gray-600 text-white hover:bg-gray-800  rounded-lg"
-                  >
-                    Delete
-                  </button>}
-                  <button>
-                    <Link
-                      to="/coffeeshops"
-                      className="px-4 py-3 bg-gray-600 text-white hover:bg-gray-800  rounded-lg"
-                    >
-                      Back
-                    </Link>
-                  </button>
                 </div>
-
-              </div>
               <div className="flex flex-col mt-4">
-                <h3 className="mt-6 mb-4 font-semibold">Comments:</h3>
+                <h3 className="mt-6 font-semibold">Comments:</h3>
+              <div className="w-full flex flex-col">
+                <input onChange={(e) => setComment(e.target.value)} type="text" placeholder="Write a comment" className="outline-none py-2 px-4 mt-4 md:mt-0 rounded-lg" />
+                <button onClick={postComment} className="bg-black text-sm text-white px-2 py-2 md:w-[20%] mt-2 mb-4 md:mt-2 rounded-lg">Add Comment</button>
+              </div>
                 {comments?.map((c) => (
                   <Comment key={c._id} c={c} coffeeShop={coffeeShop} />
                 ))}
-
-              </div>
-              {/* write a comment */}
-              <div className="w-full flex flex-col mt-4 md:flex-row">
-                <input onChange={(e) => setComment(e.target.value)} type="text" placeholder="Write a comment" className="md:w-[80%] outline-none py-2 px-4 mt-4 md:mt-0" />
-                <button onClick={postComment} className="bg-black text-sm text-white px-2 py-2 md:w-[20%] mt-4 md:mt-0">Add Comment</button>
               </div>
             </div>
           </div>

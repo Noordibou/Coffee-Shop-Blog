@@ -59,7 +59,7 @@ export default function Navbar() {
           </button>
 
           {isMenuOpen && (
-            <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-16 left-0 w-full bg-gray-100`}>
+            <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-12 left-0 w-full bg-gray-100`}>
               <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bodyColor cursor-pointer'>
                 {!user ? <li><Link to='/login' onClick={() => setIsMenuOpen(false)}>Login</Link></li>
                   : <li><Link to='/coffeeshops' onClick={() => setIsMenuOpen(false)}>Coffee Shops</Link></li>}
@@ -73,7 +73,7 @@ export default function Navbar() {
           )}
         </div>
 
-        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-2 '>
+        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-4 '>
           {!user ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Login</Link></li>
             : <li><Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Coffee Shops</Link></li>}
 

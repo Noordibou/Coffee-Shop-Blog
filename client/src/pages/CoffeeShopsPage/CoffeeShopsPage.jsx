@@ -36,13 +36,17 @@ export default function CoffeeShopsPage() {
                           alt={shop.name}
                           className="w-full h-48 object-cover"
                         />
-                        <div className="px-6 py-4 h-full">
+                        <div className="px-6 pt-4 h-full">
                           <h3 className="font-bold text-xl mb-2 lg:h-12">{shop.name}</h3>
                           <p className="text-gray-700 text-base lg:h-14">
                             {shop.cityState} <br />
                             By: {shop.author} <br />
                             <StarRating rating={shop.rating} />
                           </p>
+                          <div className="flex space-x-3 pt-2 text-gray-500">
+                            <p> {new Date(shop.updatedAt).toString().slice(0, 15)}</p>
+                            <p>{new Date(shop.updatedAt).toString().slice(16, 24)}</p>
+                          </div>
                         </div>
                       </div>
                     </div>

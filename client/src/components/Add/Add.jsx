@@ -6,7 +6,7 @@ import { UserContext } from '../../context/UserContext';
 
 const Add = () => {
     const { user } = useContext(UserContext);
-    const [file, setFile] = useState(null);
+    // const [file, setFile] = useState(null);
     const [shop, setShop] = useState({
         name: '',
         location: '',
@@ -28,10 +28,10 @@ const Add = () => {
         });
     };
 
-    const handleFileChange = (event) => {
-        const selectedFile = event.target.files[0];
-        setFile(selectedFile);
-    };
+    // const handleFileChange = (event) => {
+    //     const selectedFile = event.target.files[0];
+    //     setFile(selectedFile);
+    // };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -146,7 +146,7 @@ const Add = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                {/* <div>
                 <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                         Image Upload:
                     </label>
@@ -158,7 +158,7 @@ const Add = () => {
                         onChange={handleFileChange}
                         className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring"
                     />
-                </div>
+                </div> */}
 
                 <div className="col-span-2">
                     <button type="submit" className="px-4 py-2 bg-bodyColor text-bgColor rounded-md hover:bg-gray-600">
