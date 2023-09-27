@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const coffeeShopSchema = new Schema({
+const CoffeeShopSchema = new Schema({
   name: { type: String, required: true },
   author: { type: String },
   description: { type: String, required: true },
@@ -23,5 +23,5 @@ coffeeShopSchema.statics.makeGoogleMapsLink = function (locationString) {
   }
 };
 
-const CoffeeShop = mongoose.model('CoffeeShop', coffeeShopSchema);
+const CoffeeShop = mongoose.model('CoffeeShop', CoffeeShopSchema);
 module.exports = CoffeeShop;

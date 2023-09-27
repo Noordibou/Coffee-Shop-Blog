@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/User')
+const User = require('../models/user')
 const bcrypt = require('bcrypt')
-const CoffeeShop = require('../models/CoffeeShop')
-const Comment = require('../models/Comment')
+const CoffeeShop = require('../models/coffeeShop')
+const Comment = require('../models/comment')
 const verifyToken = require('../token')
 
 
