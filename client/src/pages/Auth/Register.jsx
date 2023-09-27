@@ -22,7 +22,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/register', formData);
+      const response = await axios.post('https://coffee-shop-blog-server.vercel.app/auth/register', formData);
       console.log('Registration successful:', response.data);
       navigate('/login'); 
     } catch (error) {
