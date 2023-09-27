@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/auth/logout', { withCredentials: true });
+      const res = await axios.get('https://coffee-shop-blog-server.vercel.app/auth/logout', { withCredentials: true });
       console.log(res)
       setUser(null);
       navigate('/');

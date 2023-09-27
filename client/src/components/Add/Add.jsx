@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import FileBase from 'react-file-base64'; // Import FileBase component
 
 const Add = () => {
     const { user } = useContext(UserContext);
-    // const [file, setFile] = useState(null);
+    const [file, setFile] = useState(null);
     const [shop, setShop] = useState({
         name: '',
         location: '',
@@ -14,7 +15,7 @@ const Add = () => {
         description: '',
         website: '',
         rating: 0,
-        image: '',
+        image: '', 
         cityState: '',
     });
 
@@ -28,28 +29,26 @@ const Add = () => {
         });
     };
 
-    // const handleFileChange = (event) => {
-    //     const selectedFile = event.target.files[0];
-    //     setFile(selectedFile);
-    // };
+ 
+    const handleFileUpload = (file) => {
+        setFile(file);
+        setShop({
+            ...shop,
+            image: file.base64, 
+        });
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // const formData = new FormData();
-        // formData.append('file', file);
-        
-        try {
-            // const imgUploadResponse = await axios.post("http://localhost:3001/upload", formData);
-            // const filename = imgUploadResponse.data.filename;
 
+        try {
             const postData = {
                 ...shop,
-                // photo: filename,
                 author: user.username,
                 userId: user._id,
             };
 
-            const postResponse = await axios.post('http://localhost:3001/coffeeshops/create', postData, { withCredentials: true });
+            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, { withCredentials: true });
 
             console.log(postResponse);
             navigate('/');
@@ -58,11 +57,12 @@ const Add = () => {
         }
     };
 
-    return (
-        <div className="pt-4 min-h-screen px-8 flex flex-col">
-            <h1 className="text-2xl font-bold mb-4 px-4">Create A Coffee Shop Listing</h1>
 
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" onSubmit={handleSubmit}>
+    return (
+        <div className="pt-4 min-h-screen px-8 max-w-5xl ">
+            <h1 className="text-2xl font-bold mb-8 px-4">Create A Coffee Shop Listing</h1>
+
+            <form className=" gap-4 px-4" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Coffee Shop Name:
@@ -146,21 +146,19 @@ const Add = () => {
                         onChange={handleChange}
                     />
                 </div>
-                {/* <div>
-                <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                <div>
+                    <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                         Image Upload:
                     </label>
-                    <input
+                    {/* Use FileBase component for image upload */}
+                    <FileBase
                         type="file"
-                        name="image"
-                        id="image"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring"
+                        multiple={false}
+                        onDone={handleFileUpload}
                     />
-                </div> */}
+                </div>
 
-                <div className="col-span-2">
+                <div className="col-span-2 mt-4">
                     <button type="submit" className="px-4 py-2 bg-bodyColor text-bgColor rounded-md hover:bg-gray-600">
                         Submit
                     </button>

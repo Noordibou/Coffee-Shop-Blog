@@ -13,7 +13,7 @@ const Comment = ({ c }) => {
 
   const deleteComment = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/comments/${id}`, {
+      await axios.delete(`https://coffee-shop-blog-server.vercel.app/comments/${id}`, {
         withCredentials: true,
       });
       window.location.reload(true);
@@ -24,7 +24,7 @@ const Comment = ({ c }) => {
 
   const updateComment = async (id) => {
     try {
-      await axios.put(`http://localhost:3001/comments/${id}`, {
+      await axios.put(`https://coffee-shop-blog-server.vercel.app/comments/${id}`, {
         comment: editedComment, // Send the edited comment text
       }, { withCredentials: true });
       window.location.reload(true);

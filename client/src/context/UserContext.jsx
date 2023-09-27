@@ -12,7 +12,7 @@ export function UserContextProvider({ children }) {
 
     const getUser = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/auth/refetch'  , { withCredentials: true });
+            const res = await axios.get('https://coffee-shop-blog-server.vercel.app/auth/refetch'  , { withCredentials: true });
             setUser(res.data);  
         } catch (err) {
             console.log(err);

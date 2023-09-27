@@ -22,13 +22,13 @@ export default function CoffeeShopDetailPage() {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:3001/coffeeshops/${id}/`, { withCredentials: true })
+      .delete(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`, { withCredentials: true })
       .then(() => navigate('/'))
       .catch((err) => console.log(err));
   };
 
   const handleEditSubmit = (editedShop) => {
-    axios.put(`http://localhost:3001/coffeeshops/${id}`, editedShop, { withCredentials: true })
+    axios.put(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}`, editedShop, { withCredentials: true })
       .then(res => {
         setCoffeeShop(res.data);
       })
@@ -36,7 +36,7 @@ export default function CoffeeShopDetailPage() {
   useEffect(() => {
     const fetchPostComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/comments/coffeeshop/${id}`);
+        const res = await axios.get(`https://coffee-shop-blog-server.vercel.app/comments/coffeeshop/${id}`);
         setComments(res.data);
       } catch (err) {
         console.log(err);
@@ -49,12 +49,10 @@ export default function CoffeeShopDetailPage() {
   const postComment = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:3001/comments/create",
+      await axios.post("https://coffee-shop-blog-server.vercel.app/comments/create",
         { comment: comment, author: user.username, coffeeShopId: id, userId: user._id },
         { withCredentials: true })
 
-      // fetchPostComments()
-      // setComment("")
       window.location.reload(true)
 
     }
@@ -66,7 +64,7 @@ export default function CoffeeShopDetailPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/coffeeshops/${id}/`)
+      .get(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`)
       .then((res) => setCoffeeShop(res.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -82,7 +80,7 @@ export default function CoffeeShopDetailPage() {
 
   const googleMapsLink = makeGoogleMapsLink(coffeeShop.location);
 
-
+  console.log(coffeeShop)
   return (
     <>
       <div className=" min-h-screen">

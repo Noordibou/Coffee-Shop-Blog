@@ -14,7 +14,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:3001/auth/login", {
+            const response = await axios.post("https://coffee-shop-blog-server.vercel.app/auth/login", {
                 email,
                 password,
             }, { withCredentials: true });

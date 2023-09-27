@@ -8,7 +8,7 @@ export default function CoffeeShopsPage() {
 
     const getCoffeeShop = () => {
         axios
-            .get('http://localhost:3001/coffeeshops/')
+            .get('https://coffee-shop-blog-server.vercel.app/coffeeshops/')
             .then((response) => setCoffeeShop(response.data))
             .catch((error) => console.log(error));
     };
@@ -22,7 +22,7 @@ export default function CoffeeShopsPage() {
             <main >
                 <div className="mx-auto flex flex-col justify-center max-w-7xl px-8 md:px-6 lg:w-4/5  ">
                     <div className='px-12'>
-                        <h1 className="text-lg md:text-2xl text-center font-semibold pt-4 ">
+                        <h1 className="text-lg md:text-2xl text-center font-semibold pt-6 ">
                             Welcome to the Ultimate Coffee Adventure!
                         </h1>
                     </div>
