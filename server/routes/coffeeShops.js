@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const CoffeeShop = require('../models/CoffeeShop')
-const verifyToken = require('../util/token')
+const verifyToken = require('../token')
 
 
 router.post('/create', verifyToken, (req, res) => {
