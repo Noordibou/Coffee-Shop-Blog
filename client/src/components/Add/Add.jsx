@@ -20,6 +20,7 @@ const Add = () => {
     });
 
     const navigate = useNavigate();
+    const [userInfoFetched, setUserInfoFetched] = useState(false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -48,7 +49,7 @@ const Add = () => {
                 userId: user._id,
             };
 
-            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, { withCredentials: true });
+            const postResponse = await axios.post('/coffeeshops/create', postData, { withCredentials: true });
 
             console.log(postResponse);
             navigate('/');
@@ -56,7 +57,14 @@ const Add = () => {
             console.log(error);
         }
     };
-    console.log(user)
+   
+    useEffect(() => {
+        if (!userInfoFetched) {
+            // Fetch user info here if it hasn't been fetched already
+            console.log(user); // You can remove this line once you've confirmed user info is fetched
+            setUserInfoFetched(true); // Mark user info as fetched
+        }
+    }, [user, userInfoFetched]);
     
 
     return (
