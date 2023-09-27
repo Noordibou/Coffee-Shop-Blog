@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
-export const UserContext = createContext({}); // Remove the default export
+export const UserContext = createContext({}); 
 
 export function UserContextProvider({ children }) {
     const [user, setUser] = useState(null);
@@ -12,7 +12,7 @@ export function UserContextProvider({ children }) {
 
     const getUser = async () => {
         try {
-            const res = await axios.get('https://coffee-shop-blog-server.vercel.app/auth/refetch', { withCredentials: true });
+            const res = await axios.get('/auth/refetch', { withCredentials: true });
             setUser(res.data);  
         } catch (err) {
             console.log(err);
