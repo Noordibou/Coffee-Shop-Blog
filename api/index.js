@@ -25,10 +25,10 @@ app.use(cors({
 
 
 
-app.use("/api/auth", authRoute)
-app.use("/api/users", userRoute)
-app.use("/api/coffeeshops", postRoute)
-app.use("/api/comments", commentRoute)
+app.use("/auth", authRoute)
+app.use("/users", userRoute)
+app.use("/coffeeshops", postRoute)
+app.use("/comments", commentRoute)
 
 
 // The following "catch all" route (note the *) is necessary
