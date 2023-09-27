@@ -44,8 +44,8 @@ const Edit = ({ shop, onEditSubmit }) => {
                         <input
                             type="text"
                             placeholder="Author"
-                            value={editedShop.writer}
-                            name="writer"
+                            value={editedShop.author}
+                            name="author"
                             onChange={handleChange}
                             className="w-full px-4 py-2 border rounded-md text-bodyColor border-gray-300 focus:ring focus:ring-indigo-200"
                         />

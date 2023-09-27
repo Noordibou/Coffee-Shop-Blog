@@ -8,7 +8,7 @@ export default function CoffeeShopsPage() {
 
     const getCoffeeShop = () => {
         axios
-            .get('https://coffee-shop-blog-server.vercel.app/coffeeshops')
+            .get('http://localhost:3001/coffeeshops/')
             .then((response) => setCoffeeShop(response.data))
             .catch((error) => console.log(error));
     };
@@ -121,14 +121,14 @@ export default function CoffeeShopsPage() {
                                         <div className="bg-white h-full rounded overflow-hidden shadow-lg">
                                             <img
                                                 src={shop.image}
-                                                alt={shop.name}
+                                                alt={shop.name} 
                                                 className="w-full h-48 object-cover"
                                             />
                                             <div className="px-6 py-4 h-full">
                                                 <h3 className="font-bold text-xl mb-2 lg:h-12">{shop.name}</h3>
                                                 <p className="text-gray-700 text-base lg:h-14">
                                                     {shop.cityState} <br />
-                                                    By: {shop.writer} <br />
+                                                    By: {shop.author } <br />
                                                     <StarRating rating={shop.rating} />
                                                 </p>
                                             </div>

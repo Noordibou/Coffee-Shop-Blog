@@ -10,7 +10,8 @@ export default function StarRating ({ rating }){
     }
   }
 
-  return <div className="flex">{stars}</div>;
+  return <span className="flex">{stars}</span>;
+  // return stars;
 };
 
 

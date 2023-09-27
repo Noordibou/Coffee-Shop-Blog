@@ -2,7 +2,7 @@ const Shop = (props) => {
     return (
         <>
             <h3>Name: {props.shop.name}</h3>
-            <h3>Writer: {props.shop.writer}</h3>
+            <h3>Writer: {props.shop.author}</h3>
             <p>Location: {props.shop.location}</p>
             <p>City/State: {props.shop.cityState}</p>
             <p>Featured Items: {props.shop.featuredItems}</p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className='bottom-0 flex-shrink-0 px-4 mt-12 w-full text-bodyColor' style={{ boxShadow: '0 -4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+    <footer className='relative bottom-0 px-4 mt-12 w-full text-bodyColor' style={{ boxShadow: '0 -4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
       <div className='container mx-auto py-2'>
         <div className='grid grid-cols-3 gap-8 text-xs'>
           <div className='flex flex-col gap-2'>

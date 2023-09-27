@@ -8,7 +8,7 @@ export default function CoffeeShopsPage() {
 
   const getCoffeeShop = () => {
     axios
-      .get('https://coffee-shop-blog-server.vercel.app/coffeeshops')
+      .get('http://localhost:3001/coffeeshops/')
       .then((response) => setCoffeeShop(response.data))
       .catch((error) => console.log(error));
   };
@@ -40,9 +40,8 @@ export default function CoffeeShopsPage() {
                           <h3 className="font-bold text-xl mb-2 lg:h-12">{shop.name}</h3>
                           <p className="text-gray-700 text-base lg:h-14">
                             {shop.cityState} <br />
-                            By: {shop.writer} <br />
+                            By: {shop.author} <br />
                             <StarRating rating={shop.rating} />
-                
                           </p>
                         </div>
                       </div>

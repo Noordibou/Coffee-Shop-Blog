@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 const Add = () => {
+    const { user } = useContext(UserContext);
+    const [file, setFile] = useState(null);
     const [shop, setShop] = useState({
         name: '',
         location: '',
@@ -12,51 +16,62 @@ const Add = () => {
         rating: 0,
         image: '',
         cityState: '',
-        writer: ''
     });
 
     const navigate = useNavigate();
 
     const handleChange = (event) => {
-        setShop({ ...shop, [event.target.name]: event.target.value });
+        const { name, value } = event.target;
+        setShop({
+            ...shop,
+            [name]: value
+        });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        axios
-            .post('https://coffee-shop-blog-server.vercel.app/coffeeshops', shop)
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error));
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+    };
 
-        navigate('/coffeeshops');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // const formData = new FormData();
+        // formData.append('file', file);
+        
+        try {
+            // const imgUploadResponse = await axios.post("http://localhost:3001/upload", formData);
+            // const filename = imgUploadResponse.data.filename;
+
+            const postData = {
+                ...shop,
+                // photo: filename,
+                author: user.username,
+                userId: user._id,
+            };
+
+            const postResponse = await axios.post('http://localhost:3001/coffeeshops/create', postData, { withCredentials: true });
+
+            console.log(postResponse);
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
-        <div className="pt-4 min-h-screen">
+        <div className="pt-4 min-h-screen px-8 flex flex-col">
             <h1 className="text-2xl font-bold mb-4 px-4">Create A Coffee Shop Listing</h1>
 
             <form className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                        Name:
+                        Coffee Shop Name:
                     </label>
                     <input
                         type="text"
                         name="name"
                         id="name"
                         className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring "
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="writer" className="block text-sm font-medium text-gray-700">
-                        Author:
-                    </label>
-                    <input
-                        type="text"
-                        name="writer"
-                        id="writer"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
                         onChange={handleChange}
                     />
                 </div>
@@ -132,15 +147,16 @@ const Add = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-                        Image URL:
+                <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                        Image Upload:
                     </label>
                     <input
-                        type="text"
+                        type="file"
                         name="image"
                         id="image"
-                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring  "
-                        onChange={handleChange}
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="mt-1 p-2 w-full rounded-md border-gray-300 focus:ring"
                     />
                 </div>
 
