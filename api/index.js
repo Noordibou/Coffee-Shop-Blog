@@ -9,8 +9,13 @@ const postRoute = require('./routes/coffeeShops')
 const commentRoute = require('./routes/comments')
 const app = express()
 
+app.use(logger('dev'))
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(cookieParser())
 require('dotenv').config()
 require('./config/database')
+
 
 app.use(cors({
   origin: 'https://coffee-shop-blog.vercel.app',
@@ -18,12 +23,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(logger('dev'))
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
-app.use(cookieParser())
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 app.use("/auth", authRoute)
 app.use("/users", userRoute)
@@ -33,6 +33,8 @@ app.use("/comments", commentRoute)
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });

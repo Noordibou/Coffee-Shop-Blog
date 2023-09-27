@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Comment = require('../models/comment')
-const verifyToken = require('../token')
+const verifyToken = require('../util/token')
 
 //CREATE
 router.post("/create", verifyToken, async (req, res) => {
