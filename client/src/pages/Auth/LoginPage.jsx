@@ -90,7 +90,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import axios from "axios"
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../context/UserContext'
 
 
 const Login = () => {
@@ -102,7 +102,7 @@ const Login = () => {
 
   const handleLogin=async()=>{
     try{
-      const res=await axios.post("https://coffee-shop-blog-server.vercel.app/api/auth/login",{email,password},{withCredentials:true})
+      const res=await axios.post("https://coffee-shop-blog-server.vercel.app/auth/login",{email,password},{withCredentials:true})
       // console.log(res.data)
       setUser(res.data)
       navigate("/")
