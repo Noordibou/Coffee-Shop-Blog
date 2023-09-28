@@ -20,8 +20,12 @@ export default function LoginPage() {
             }, { withCredentials: true });
 
             if (response.status === 200) {
+                const { token, user } = response.data;
+
+                localStorage.setItem('token', token);
+
+                setUser(user);
                 console.log("Login successful!");
-                setUser(response.data)
                 navigate('/');
             } else {
                 setError("Wrong credentials!");

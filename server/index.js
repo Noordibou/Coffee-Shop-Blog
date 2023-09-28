@@ -8,7 +8,7 @@ const userRoute = require('./routes/users')
 const postRoute = require('./routes/coffeeShops')
 const commentRoute = require('./routes/comments')
 const app = express()
-import verifyToken from './token';
+
 
 app.use(logger('dev'))
 app.use(express.json({ limit: '10mb' }));

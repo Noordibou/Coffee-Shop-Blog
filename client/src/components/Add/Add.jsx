@@ -5,8 +5,24 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import FileBase from 'react-file-base64'; // Import FileBase component
 
+
+const useToken = () => {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const getToken = async () => {
+            const token = await localStorage.getItem('token');
+            setToken(token);
+        }
+        getToken();
+    }, []);
+
+    return token;
+}
+
 const Add = () => {
     const { user } = useContext(UserContext);
+    const token = useToken();
     const [file, setFile] = useState(null);
     const [shop, setShop] = useState({
         name: '',
@@ -15,7 +31,7 @@ const Add = () => {
         description: '',
         website: '',
         rating: 0,
-        image: '', 
+        image: '',
         cityState: '',
     });
 
@@ -30,12 +46,12 @@ const Add = () => {
         });
     };
 
- 
+
     const handleFileUpload = (file) => {
         setFile(file);
         setShop({
             ...shop,
-            image: file.base64, 
+            image: file.base64,
         });
     };
 
@@ -49,7 +65,11 @@ const Add = () => {
                 userId: user._id,
             };
 
-            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, { withCredentials: true });
+            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
 
             console.log(postResponse);
             navigate('/');
@@ -57,7 +77,7 @@ const Add = () => {
             console.log(error);
         }
     };
-   
+
     useEffect(() => {
         if (!userInfoFetched) {
             // Fetch user info here if it hasn't been fetched already
@@ -65,7 +85,7 @@ const Add = () => {
             setUserInfoFetched(true); // Mark user info as fetched
         }
     }, [user, userInfoFetched]);
-    
+
 
     return (
         <div className="pt-4 min-h-screen px-8 max-w-5xl ">

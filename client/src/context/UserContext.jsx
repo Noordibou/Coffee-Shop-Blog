@@ -6,10 +6,7 @@ export const UserContext = createContext({});
 export function UserContextProvider({ children }) {
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        getUser();
-    }, []);
-
+    
     const getUser = async () => {
         try {
             const res = await axios.get('/auth/refetch', { withCredentials: true });
@@ -19,7 +16,15 @@ export function UserContextProvider({ children }) {
             console.error("Response data:", err.response?.data);
         }
     }
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          setUser({token});
+        }
+        getUser();
+    }, []);
 
+    
     return (
         <UserContext.Provider value={{ user, setUser }}>
             {children}
