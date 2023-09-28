@@ -65,12 +65,7 @@ const Add = () => {
                 userId: user._id,
             };
 
-            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
+            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, { withCredentials: true });
             console.log(postResponse);
             navigate('/');
         } catch (error) {
