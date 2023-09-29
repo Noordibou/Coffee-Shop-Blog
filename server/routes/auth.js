@@ -7,47 +7,45 @@ const { createSecretToken } = require('../util/secretToken')
 
 
 //REGISTER
-router.post("/register", async (req, res) => {
-    try {
-        const { username, email, password } = req.body
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = bcrypt.hashSync(password, salt)
-        const newUser = new User({ username, email, password: hashedPassword })
-        const savedUser = await newUser.save()
-        res.status(200).json(savedUser)
-    const token = createSecretToken(savedUser._id);
+// router.post("/register", async (req, res) => {
+//     try {
+//         const { username, email, password } = req.body
+//         const salt = await bcrypt.genSalt(10)
+//         const hashedPassword = bcrypt.hashSync(password, salt)
+//         const newUser = new User({ username, email, password: hashedPassword })
+//         const savedUser = await newUser.save()
+//         res.status(200).json(savedUser)
+//     const token = createSecretToken(newUser._id);
 
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
+//     res.cookie("token", token, {
+//       withCredentials: true,
+//       httpOnly: false,
+//     });
 
-    res.status(201).json({ message: "User signed in successfully", success: true, savedUser });
-    next();
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
+//     res.status(201).json({ message: "User signed in successfully", success: true, savedUser });
+//     next();
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// });
 
 //REGISTER
-// router.post("/register",async(req,res)=>{
-//     try{
-//         const {username,email,password}=req.body
-//         const salt=await bcrypt.genSalt(10)
-//         const hashedPassword=await bcrypt.hashSync(password,salt)
-//         const newUser=new User({username,email,password:hashedPassword})
-//         const savedUser=await newUser.save()
-//         res.status(200).json(savedUser)
+router.post("/register",async(req,res)=>{
+    try{
+        const {username,email,password}=req.body
+        const salt=await bcrypt.genSalt(10)
+        const hashedPassword= bcrypt.hashSync(password,salt)
+        const newUser=new User({username,email,password:hashedPassword})
+        const savedUser=await newUser.save()
+        res.status(200).json(savedUser)
 
-//     }
-//     catch(err){
-//         res.status(500).json(err)
-//     }
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
 
-// })
-
-
+})
 
 //LOGIN
 router.post("/login", async (req, res) => {
@@ -75,6 +73,11 @@ router.post("/login", async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
+
+
+// //LOGIN
 // router.post("/login",async (req,res)=>{
 //     try{
 //         const user=await User.findOne({email:req.body.email})
@@ -87,7 +90,7 @@ router.post("/login", async (req, res) => {
 //         if(!match){
 //             return res.status(401).json("Wrong credentials!")
 //         }
-//         const token=jwt.sign({_id:user._id,username:user.username,email:user.email},process.env.TOKEN_KEY,{expiresIn:"3d"})
+//         const token=jwt.sign({_id:user._id,username:user.username,email:user.email},process.env.SECRET,{expiresIn:"3d"})
 //         const {password,...info}=user._doc
 //         res.cookie("token",token).status(200).json(info)
 
@@ -100,12 +103,12 @@ router.post("/login", async (req, res) => {
 
 
 //LOGOUT
-router.get("/logout", async (req, res) => {
-    try {
-        res.clearCookie("token", { sameSite: "none", secure: true }).status(200).send("User logged out successfully!")
+router.get("/logout",async (req,res)=>{
+    try{
+        res.clearCookie("token",{sameSite:"none",secure:true}).status(200).send("User logged out successfully!")
 
     }
-    catch (err) {
+    catch(err){
         res.status(500).json(err)
     }
 })
@@ -120,8 +123,6 @@ router.get("/refetch", (req,res)=>{
         res.status(200).json(data)
     })
 })
-
-
 
 
 module.exports = router

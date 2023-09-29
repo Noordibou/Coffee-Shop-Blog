@@ -9,7 +9,6 @@ const postRoute = require('./routes/coffeeShops')
 const commentRoute = require('./routes/comments')
 const app = express()
 
-
 app.use(logger('dev'))
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -24,6 +23,7 @@ app.use(cors({
   credentials: true,
   methods: 'GET, POST, PUT, DELETE',
 }));
+
 
 
 // var allowlist = ['https://coffee-shop-blog.vercel.app',
@@ -45,6 +45,7 @@ app.use("/auth", authRoute)
 app.use("/users", userRoute)
 app.use("/coffeeshops", postRoute)
 app.use("/comments", commentRoute)
+
 
 
 // The following "catch all" route (note the *) is necessary

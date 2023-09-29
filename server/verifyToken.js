@@ -13,20 +13,20 @@ const verifyToken=(req,res,next)=>{
             return res.status(403).json("Token is not valid!")
         }
         
-//         req.userId=data._id
+        req.userId=data._id
        
-//         // console.log("passed")
+        // console.log("passed")
         
-//         next()
-//     })
-// }
-        else {
-    const user = await User.findById(data._id)
-    if (user) {
-    return res.json({ status: true, user: user.username })
-  } else return res.json({ status: false })
-  }
-})
+        next()
+    })
 }
+//         }else {
+//     const user = await User.findById(data._id)
+//     if (user) {
+//     return res.json({ status: true, user: user.username })
+//   } else return res.json({ status: false })
+//   }
+// })
+// }
 
 module.exports=verifyToken

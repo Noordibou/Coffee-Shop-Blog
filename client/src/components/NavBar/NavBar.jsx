@@ -36,7 +36,7 @@ export default function Navbar() {
       const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
       console.log(res)
       setUser(null);
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
