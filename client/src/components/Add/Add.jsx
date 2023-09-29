@@ -51,7 +51,7 @@ const Add = () => {
                 userId: user._id,
             };
 
-            const postResponse = await axios.post(URL + `/coffeeshops/create`, postData, { withCredentials: true });
+            const postResponse = await axios.post(URL + `/coffeeshops/create`, postData);
             console.log(postResponse);
             navigate('/');
         } catch (error) {

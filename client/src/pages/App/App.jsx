@@ -9,10 +9,12 @@ import Footer from '../Footer/Footer';
 import Login from '../Auth/LoginPage';
 import Register from '../Auth/Register';
 import { UserContextProvider } from '../../context/UserContext';
+import { BrowserRouter } from 'react-router-dom';
 
 
 export default function App() {
   return (
+    <BrowserRouter>
       <UserContextProvider>
     <main className=" font-titleFont bg-gray-100 ">
         <NavBar />
@@ -27,5 +29,6 @@ export default function App() {
         < Footer />
     </main>
       </UserContextProvider>
+    </BrowserRouter>
   );
 }
