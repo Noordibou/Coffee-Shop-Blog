@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
+import URL from '../../URL';
 
 export default function Register() {
   const navigate = useNavigate(); 
@@ -22,7 +23,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://coffee-shop-blog-server.vercel.app/auth/register', formData);
+      const response = await axios.post(URL+`/auth/register`, formData);
       console.log('Registration successful:', response.data);
       navigate('/login'); 
     } catch (error) {

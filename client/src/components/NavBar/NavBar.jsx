@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import URL from '../../URL'
 
 export default function Navbar() {
 
@@ -32,7 +33,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get('https://coffee-shop-blog-server.vercel.app/auth/logout', { withCredentials: true });
+      const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
       console.log(res)
       setUser(null);
       navigate('/');

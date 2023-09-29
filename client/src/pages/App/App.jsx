@@ -13,8 +13,8 @@ import { UserContextProvider } from '../../context/UserContext';
 
 export default function App() {
   return (
-    <main className=" font-titleFont bg-gray-100 ">
       <UserContextProvider>
+    <main className=" font-titleFont bg-gray-100 ">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,8 +24,8 @@ export default function App() {
           <Route path="/create" element={<Add />} />
           <Route path="/details/:id" element={<CoffeeShopDetailPage />} />
         </Routes>
-      </UserContextProvider>
         < Footer />
     </main>
+      </UserContextProvider>
   );
 }

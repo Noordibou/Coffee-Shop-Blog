@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import Comment from '../../components/Comment';
 import { AiFillDelete } from "react-icons/ai";
 import { IoArrowBackSharp } from "react-icons/io5";
+import URL from '../../URL'
 
 
 export default function CoffeeShopDetailPage() {
@@ -22,13 +23,13 @@ export default function CoffeeShopDetailPage() {
 
   const handleDelete = () => {
     axios
-      .delete(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`, { withCredentials: true })
+      .delete(URL+`/coffeeshops/${id}/`, { withCredentials: true })
       .then(() => navigate('/'))
       .catch((err) => console.log(err));
   };
 
   const handleEditSubmit = (editedShop) => {
-    axios.put(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}`, editedShop, { withCredentials: true })
+    axios.put(URL+`/coffeeshops/${id}`, editedShop, { withCredentials: true })
       .then(res => {
         setCoffeeShop(res.data);
       })
@@ -36,7 +37,7 @@ export default function CoffeeShopDetailPage() {
   useEffect(() => {
     const fetchPostComments = async () => {
       try {
-        const res = await axios.get(`https://coffee-shop-blog-server.vercel.app/comments/coffeeshop/${id}`);
+        const res = await axios.get(URL+`/comments/coffeeshop/${id}`);
         setComments(res.data);
       } catch (err) {
         console.log(err);
@@ -49,7 +50,7 @@ export default function CoffeeShopDetailPage() {
   const postComment = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("https://coffee-shop-blog-server.vercel.app/comments/create",
+      await axios.post(URL+`/comments/create`,
         { comment: comment, author: user.username, coffeeShopId: id, userId: user._id },
         { withCredentials: true })
 
@@ -64,7 +65,7 @@ export default function CoffeeShopDetailPage() {
 
   useEffect(() => {
     axios
-      .get(`https://coffee-shop-blog-server.vercel.app/coffeeshops/${id}/`)
+      .get(URL+`/coffeeshops/${id}/`)
       .then((res) => setCoffeeShop(res.data))
       .catch((err) => console.log(err));
   }, [id]);

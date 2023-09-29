@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import StarRating from '../../components/StarRating/StarRating';
+import URL from '../../URL'
 
 export default function CoffeeShopsPage() {
   const [coffeeShop, setCoffeeShop] = useState([]);
 
   const getCoffeeShop = () => {
     axios
-      .get('https://coffee-shop-blog-server.vercel.app/coffeeshops/')
+      .get(URL+`/coffeeshops/`)
       .then((response) => setCoffeeShop(response.data))
       .catch((error) => console.log(error));
   };

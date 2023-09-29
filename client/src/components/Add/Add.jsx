@@ -3,26 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
-import FileBase from 'react-file-base64'; // Import FileBase component
+import FileBase from 'react-file-base64';
+import URL from '../../URL'
 
-
-const useToken = () => {
-    const [token, setToken] = useState(null);
-
-    useEffect(() => {
-        const getToken = async () => {
-            const token = await localStorage.getItem('token');
-            setToken(token);
-        }
-        getToken();
-    }, []);
-
-    return token;
-}
 
 const Add = () => {
     const { user } = useContext(UserContext);
-    const token = useToken();
     const [file, setFile] = useState(null);
     const [shop, setShop] = useState({
         name: '',
@@ -65,7 +51,7 @@ const Add = () => {
                 userId: user._id,
             };
 
-            const postResponse = await axios.post('https://coffee-shop-blog-server.vercel.app/coffeeshops/create', postData, { withCredentials: true });
+            const postResponse = await axios.post(URL + `/coffeeshops/create`, postData, { withCredentials: true });
             console.log(postResponse);
             navigate('/');
         } catch (error) {

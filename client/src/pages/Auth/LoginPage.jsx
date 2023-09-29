@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import URL from '../../URL'
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("https://coffee-shop-blog-server.vercel.app/auth/login", {
+            const response = await axios.post(URL + `/auth/login`, {
                 email,
                 password,
             }, { withCredentials: true });

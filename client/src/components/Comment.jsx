@@ -2,9 +2,10 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { AiFillDelete } from "react-icons/ai";
-import {  MdCancel } from "react-icons/md";
+import { MdCancel } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { AiFillCheckCircle } from "react-icons/ai";
+import URL from '../URL'
 
 const Comment = ({ c }) => {
   const { user } = useContext(UserContext);
@@ -13,7 +14,7 @@ const Comment = ({ c }) => {
 
   const deleteComment = async (id) => {
     try {
-      await axios.delete(`https://coffee-shop-blog-server.vercel.app/comments/${id}`, {
+      await axios.delete(URL + `/comments/${id}`, {
         withCredentials: true,
       });
       window.location.reload(true);
@@ -24,7 +25,7 @@ const Comment = ({ c }) => {
 
   const updateComment = async (id) => {
     try {
-      await axios.put(`https://coffee-shop-blog-server.vercel.app/comments/${id}`, {
+      await axios.put(URL + `/comments/${id}`, {
         comment: editedComment, // Send the edited comment text
       }, { withCredentials: true });
       window.location.reload(true);
@@ -54,10 +55,10 @@ const Comment = ({ c }) => {
                       setIsEditing(false);
                     }}
                   >
-                    <AiFillCheckCircle/>
+                    <AiFillCheckCircle />
                   </p>
                   <p className="cursor-pointer" onClick={() => setIsEditing(false)}>
-                    <MdCancel/>
+                    <MdCancel />
                   </p>
                 </>
               ) : (
