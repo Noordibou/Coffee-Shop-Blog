@@ -4,7 +4,7 @@ const User=require('../models/User')
 const bcrypt=require('bcrypt')
 const CoffeeShop=require('../models/CoffeeShop')
 const Comment=require('../models/Comment')
-const verifyToken = require('../token')
+const verifyToken = require('../verifyToken')
 
 
 //UPDATE

@@ -19,11 +19,33 @@ require('./config/database')
 
 
 app.use(cors({
-  origin: 'https://coffee-shop-blog.vercel.app',
-  // origin: 'http://localhost:3000',
-  methods: 'GET, POST, PUT, DELETE',
+  origin: ['https://coffee-shop-blog.vercel.app',
+    'http://localhost:3000'],
   credentials: true,
+  methods: 'GET, POST, PUT, DELETE',
+  allowedHeaders: [
+    'Access-Control-Allow-Origin',
+    'Content-Type',
+    'Authorization',
+  ],
 }));
+
+
+// var allowlist = ['https://coffee-shop-blog.vercel.app',
+//   'http://localhost:3000']
+
+// var corsOptionsDelegate = function (req, callback) {
+//   var corsOptions
+//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+//   } else {
+//     corsOptions = { origin: false } // disable CORS for this request
+//   }
+//   callback(null, corsOptions) // callback expects two parameters: error and options
+// }
+
+// app.use(cors(corsOptionsDelegate));
+
 
 
 

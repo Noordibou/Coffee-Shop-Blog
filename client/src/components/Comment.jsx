@@ -25,7 +25,7 @@ const Comment = ({ c }) => {
 
   const updateComment = async (id) => {
     try {
-      await axios.put(URL + `/comments/${id}`, {
+      await axios.put(URL + `/comments/${id}`,{
         comment: editedComment, // Send the edited comment text
       }, { withCredentials: true });
       window.location.reload(true);
