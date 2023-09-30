@@ -14,9 +14,7 @@ const Comment = ({ c }) => {
 
   const deleteComment = async (id) => {
     try {
-      await axios.delete(URL + `/comments/${id}`, {
-        withCredentials: true,
-      });
+      await axios.delete(URL + `/comments/${id}`);
       window.location.reload(true);
     } catch (err) {
       console.log(err);
@@ -26,8 +24,7 @@ const Comment = ({ c }) => {
   const updateComment = async (id) => {
     try {
       await axios.put(URL + `/comments/${id}`,{
-        comment: editedComment, // Send the edited comment text
-      }, { withCredentials: true });
+        comment: editedComment});
       window.location.reload(true);
     } catch (err) {
       console.log(err);
