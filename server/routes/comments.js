@@ -4,7 +4,7 @@ const Comment = require('../models/Comment')
 const verifyToken = require('../verifyToken')
 
 //CREATE
-router.post("/create", verifyToken, async (req, res) => {
+router.post("/create", async (req, res) => {
     Comment.create(req.body)
     .then((createdComment) => {
         res.json(createdComment)
@@ -12,12 +12,12 @@ router.post("/create", verifyToken, async (req, res) => {
 });
 
 //UPDATE
-router.put('/:id', verifyToken, (req, res) => {
+router.put('/:id',  (req, res) => {
     Comment.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((updatedComment) => res.json(updatedComment))
 });
 
-router.delete('/:id', verifyToken, (req, res) => {
+router.delete('/:id',  (req, res) => {
     Comment.findByIdAndDelete(req.params.id)
     .then((deletedComment) => res.json(deletedComment))
 });

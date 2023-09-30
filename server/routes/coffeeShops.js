@@ -11,12 +11,12 @@ router.post('/create',  (req, res) => {
     })
 });
 
-router.put('/:id', verifyToken, (req, res) => {
+router.put('/:id', (req, res) => {
     CoffeeShop.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((updatedShop) => res.json(updatedShop))
 });
 
-router.delete('/:id', verifyToken, (req, res) => {
+router.delete('/:id', (req, res) => {
     CoffeeShop.findByIdAndDelete(req.params.id)
     .then((deletedShop) => res.json(deletedShop))
 });
