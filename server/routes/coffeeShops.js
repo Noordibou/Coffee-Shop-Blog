@@ -4,7 +4,7 @@ const CoffeeShop = require('../models/CoffeeShop')
 const verifyToken = require('../verifyToken')
 
 
-router.post('/create', verifyToken, (req, res) => {
+router.post('/create',  (req, res) => {
     CoffeeShop.create(req.body)
     .then((createdShop) => {
         res.json(createdShop)

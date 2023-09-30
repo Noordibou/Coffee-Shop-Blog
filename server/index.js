@@ -47,7 +47,6 @@ app.use("/coffeeshops", postRoute)
 app.use("/comments", commentRoute)
 
 
-
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
