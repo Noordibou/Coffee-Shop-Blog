@@ -35,7 +35,8 @@ export default function Navbar() {
     // Clear cookie on frontend
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   
-    const res = await axios.get('/auth/logout'); 
+    const res = await axios.get(URL+'/auth/logout'); 
+    console.log(res);
     setUser(null);
     navigate('/');
   }
