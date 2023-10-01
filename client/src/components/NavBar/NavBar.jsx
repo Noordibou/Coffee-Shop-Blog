@@ -43,7 +43,7 @@ export default function Navbar() {
   
     // Redirect 
     setUser(null);
-    navigate('/login');
+    navigate('/');
   }
 
 
