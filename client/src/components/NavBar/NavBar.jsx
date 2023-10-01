@@ -32,13 +32,18 @@ export default function Navbar() {
   const { setUser } = useContext(UserContext);
 
   const handleLogout = async () => {
-    // Clear cookie on frontend
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+    // Logout request
+    const res = await axios.get(URL+'/auth/logout');
   
-    const res = await axios.get(URL+'/auth/logout'); 
-    console.log(res);
+    // Immediately clear cookies
+    document.cookie.split(";").forEach(c => {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+    });
+  
+    // Redirect 
     setUser(null);
-    navigate('/');
+    navigate('/login');
   }
 
 
