@@ -1,100 +1,38 @@
-// import React, { useContext, useState } from "react";
-// import axios from "axios";
-// import { useNavigate } from 'react-router-dom';
-// import { UserContext } from '../../context/UserContext';
-// import URL from '../../URL'
-// import Cookies from 'js-cookie';
-
-// export default function LoginPage() {
-
-//   const navigate = useNavigate();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState(null);
-//   const { setUser } = useContext(UserContext);
-  
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post(URL +"/auth/login", {
-//         email, 
-//         password
-//       }, {
-//         withCredentials: true  
-//       });
-      
-//       if (response.status === 200) {
-//         console.log("Login successful!");
-        
-//         // Save the tokens
-//         localStorage.setItem("accessToken", response.data.token);
-//         localStorage.setItem("refreshToken", response.data.refreshToken);
-//         console.log(response.data.token)
-        
-//         setUser(response.data);
-//         navigate('/');
-        
-//       } else {
-//         setError("Wrong credentials!");
-//       }
-      
-//     } catch (err) {
-//       setError("An error occurred while logging in.");
-//       console.error("Error:", err);
-//     }
-//   };
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-
-// Add js-cookie
-import Cookies from 'js-cookie'; 
-
-import URL from '../../URL';
+import URL from '../../URL'
 
 export default function LoginPage() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+    const { setUser } = useContext(UserContext)
 
-  const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+        try {
+            const response = await axios.post(URL +`/auth/login`, {
+                email,
+                password,
+            }, { withCredentials: true });
 
-  const { setUser } = useContext(UserContext);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(URL + "/auth/login", {
-        email, 
-        password
-      }, {
-        withCredentials: true  
-      });
-
-      if (response.status === 200) {
-        console.log("Login successful!");
-
-        // Get the token from the cookie
-        const accessToken = Cookies.get('token'); 
-
-        // Persist the token in a cookie
-        Cookies.set('token', accessToken);
-        console.log(accessToken)
-        setUser(response.data);
-        navigate('/');
-        
-      } else {
-        setError("Wrong credentials!");
-      }
-
-    } catch (err) {
-      setError("An error occurred while logging in.");
-      console.error("Error:", err);
-    }
-  };
+            if (response.status === 200) {
+                
+                console.log("Login successful!");
+                setUser(response.data)
+                navigate('/');
+            } else {
+                setError("Wrong credentials!");
+            }
+        } catch (err) {
+            setError("An error occurred while logging in.");
+            console.error("Error:", err);
+        }
+    };
 
     return (
         <main className="bg-gray-100 flex justify-center pt-44 h-screen">
