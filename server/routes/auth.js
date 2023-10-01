@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 //     }
 // })
 
-app.get('/auth/logout', (req, res) => {
+router.get('/auth/logout', (req, res) => {
     req.logout(); // Clear the user's session
     res.status(200).send('Logged out');
   });
