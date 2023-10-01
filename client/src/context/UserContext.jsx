@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import URL from "../URL";
 
 export const UserContext=createContext({})
 
@@ -14,7 +15,7 @@ export function UserContextProvider({children}){
 
     const getUser=async()=>{
       try{
-        const res=await axios.get("/auth/refetch")
+        const res=await axios.get(URL+"/auth/refetch")
         // console.log(res.data)
         setUser(res.data)
 
