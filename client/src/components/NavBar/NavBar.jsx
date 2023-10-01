@@ -33,7 +33,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get(URL + `/auth/logout`,{ withCredentials: true });
+      const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
       console.log(res)
       setUser(null);
       navigate('/');
@@ -41,7 +41,7 @@ export default function Navbar() {
       console.log(err);
     }
   }
-  
+
 
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
@@ -62,12 +62,12 @@ export default function Navbar() {
           {isMenuOpen && (
             <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-12 left-0 w-full bg-gray-100`}>
               <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bodyColor cursor-pointer'>
-                {user===null ? <li><Link to='/login' onClick={() => setIsMenuOpen(false)}>Login</Link></li>
+                {!user ? <li><Link to='/login' onClick={() => setIsMenuOpen(false)}>Login</Link></li>
                   : <li><Link to='/coffeeshops' onClick={() => setIsMenuOpen(false)}>Coffee Shops</Link></li>}
 
-                {user===null ? <li><Link to='/register' onClick={() => setIsMenuOpen(false)}>Register</Link></li>
+                {!user ? <li><Link to='/register' onClick={() => setIsMenuOpen(false)}>Register</Link></li>
                   : <li><Link to='/create' onClick={() => setIsMenuOpen(false)}>Create a Listing</Link></li>}
-                {!(user===null)&& <li onClick={handleLogout}>Logout</li>}
+                {user && <li onClick={handleLogout}>Logout</li>}
 
               </ul>
             </div>
@@ -75,12 +75,12 @@ export default function Navbar() {
         </div>
 
         <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-4 '>
-          {user===null ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Login</Link></li>
+          {!user ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Login</Link></li>
             : <li><Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Coffee Shops</Link></li>}
 
-          {user===null ? <li><Link to='/register' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Register</Link></li>
+          {!user ? <li><Link to='/register' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Register</Link></li>
             : <li><Link to='/create' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Create a Listing</Link></li>}
-          {!(user===null) && <li onClick={handleLogout} className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Logout</li>}
+          {user && <li onClick={handleLogout} className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Logout</li>}
         </ul>
       </div>
     </div>
