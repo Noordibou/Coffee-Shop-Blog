@@ -2,28 +2,29 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import URL from '../../URL'
+import URL from '../../URL';
 
 export default function LoginPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
-    const { setUser } = useContext(UserContext)
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(URL +`/auth/login`, {
+            const response = await axios.post(URL + `/auth/login`, {
                 email,
                 password,
             }, { withCredentials: true });
 
             if (response.status === 200) {
-                
                 console.log("Login successful!");
-                setUser(response.data)
+                // Store the token in local storage
+                localStorage.setItem("token", response.data.token);
+                setUser(response.data);
                 navigate('/');
             } else {
                 setError("Wrong credentials!");

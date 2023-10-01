@@ -33,7 +33,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
+      const res = await axios.get(URL + `/auth/logout`,{ withCredentials: true });
       console.log(res)
       setUser(null);
       navigate('/');
@@ -41,7 +41,7 @@ export default function Navbar() {
       console.log(err);
     }
   }
-
+  
 
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
