@@ -32,14 +32,12 @@ export default function Navbar() {
   const { setUser } = useContext(UserContext);
 
   const handleLogout = async () => {
-    try {
-      const res = await axios.get(URL +`/auth/logout`, { withCredentials: true });
-      console.log(res)
-      setUser(null);
-      navigate('/');
-    } catch (err) {
-      console.log(err);
-    }
+    // Clear cookie on frontend
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  
+    const res = await axios.get('/auth/logout'); 
+    setUser(null);
+    navigate('/');
   }
 
 
