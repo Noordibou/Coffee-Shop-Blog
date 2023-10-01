@@ -26,7 +26,6 @@ app.use(cors({
 }));
 
 
-
 app.use("/auth", authRoute)
 app.use("/users", userRoute)
 app.use("/coffeeshops", postRoute)
