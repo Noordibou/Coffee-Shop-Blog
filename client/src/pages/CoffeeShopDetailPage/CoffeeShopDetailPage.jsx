@@ -23,13 +23,13 @@ export default function CoffeeShopDetailPage() {
 
   const handleDelete = () => {
     axios
-      .delete(URL+`/coffeeshops/${id}/`)
+      .delete(URL+`/coffeeshops/${id}/`, { withCredentials: true })
       .then(() => navigate('/'))
       .catch((err) => console.log(err));
   };
 
   const handleEditSubmit = (editedShop) => {
-    axios.put(URL+`/coffeeshops/${id}`, editedShop)
+    axios.put(URL+`/coffeeshops/${id}`, editedShop, { withCredentials: true })
       .then(res => {
         setCoffeeShop(res.data);
       })
@@ -51,7 +51,8 @@ export default function CoffeeShopDetailPage() {
     e.preventDefault()
     try {
       await axios.post(URL+`/comments/create`,
-        { comment: comment, author: user.username, coffeeShopId: id, userId: user._id })
+        { comment: comment, author: user.username, coffeeShopId: id, userId: user._id },
+        { withCredentials: true })
 
       window.location.reload(true)
 
