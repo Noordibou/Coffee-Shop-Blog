@@ -1,15 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Add from '../../components/Add/Add';
-import CoffeeShopsPage from '../CoffeeShopsPage/CoffeeShopsPage';
-import CoffeeShopDetailPage from '../CoffeeShopDetailPage/CoffeeShopDetailPage';
-import NavBar from '../../components/NavBar/NavBar';
-import Home from '../Home/Home';
-import Footer from '../Footer/Footer';
-import Login from '../Auth/LoginPage';
-import Register from '../Auth/Register';
-import { UserContextProvider } from '../../context/UserContext';
+import Add from './components/Add';
+import CoffeeShopsPage from './pages/CoffeeShopsPage';
+import CoffeeShopDetailPage from './pages/CoffeeShopDetailPage';
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import Footer from './pages/Footer';
+import Login from './pages/Auth/LoginPage';
+import Register from './pages/Auth/Register';
+import { UserContextProvider } from './context/UserContext';
 import { BrowserRouter } from 'react-router-dom';
+import MyBlogs from './pages/MyBlogs';
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/coffeeshops" element={<CoffeeShopsPage />} />
           <Route path="/create" element={<Add />} />
           <Route path="/details/:id" element={<CoffeeShopDetailPage />} />
+          <Route path="/myblogs/:id" element={<MyBlogs/>}/>
         </Routes>
         < Footer />
     </main>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import StarRating from '../../components/StarRating/StarRating';
-import URL from '../../URL'
+import StarRating from '../components/StarRating';
+import URL from '../URL'
 
 export default function CoffeeShopsPage() {
     const [coffeeShop, setCoffeeShop] = useState([]);

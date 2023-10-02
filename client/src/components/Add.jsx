@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../context/UserContext';
 import FileBase from 'react-file-base64';
-import URL from '../../URL'
+import URL from '../URL'
 
 
 const Add = () => {

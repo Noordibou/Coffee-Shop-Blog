@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import URL from '../../URL'
+import URL from '../URL'
 
 export default function Navbar() {
 
@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
       <div className='flex md:justify-around justify-between px-4 py-2'>
-        <h2 className='md:text-3xl text-xl pt-2 font-semibold font-titleFont text-bodyColor px-2'>
+        <h2 className='lg:text-3xl md:text-2xl text-xl pt-3 font-semibold font-titleFont text-bodyColor px-2'>
           <Link to='/'>Caffeine Chronicles</Link>
         </h2>
         <div ref={menuRef}>
@@ -67,6 +67,7 @@ export default function Navbar() {
 
                 {!user ? <li><Link to='/register' onClick={() => setIsMenuOpen(false)}>Register</Link></li>
                   : <li><Link to='/create' onClick={() => setIsMenuOpen(false)}>Create a Listing</Link></li>}
+                {user && <h3><Link to={"/myblogs/"+user._id} onClick={() => setIsMenuOpen(false)}>My blogs</Link></h3>}
                 {user && <li onClick={handleLogout}>Logout</li>}
 
               </ul>
@@ -74,13 +75,14 @@ export default function Navbar() {
           )}
         </div>
 
-        <ul className='hidden md:flex justify-center gap-6 text-bodyColor text-[18px] font-titleFont pt-4 '>
-          {!user ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Login</Link></li>
-            : <li><Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Coffee Shops</Link></li>}
+        <ul className='hidden md:flex justify-center gap-6 text-bodyColor lg:text-[18px] font-titleFont pt-4 '>
+          {!user ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-400  '>Login</Link></li>
+            : <li><Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-400  '>Coffee Shops</Link></li>}
 
-          {!user ? <li><Link to='/register' className='cursor-pointer font-titleFont transition-all hover:text-gray-600  '>Register</Link></li>
-            : <li><Link to='/create' className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Create a Listing</Link></li>}
-          {user && <li onClick={handleLogout} className='cursor-pointer font-titleFont transition-all hover:text-gray-600'>Logout</li>}
+          {!user ? <li><Link to='/register' className='cursor-pointer font-titleFont transition-all hover:text-gray-400  '>Register</Link></li>
+            : <li><Link to='/create' className='cursor-pointer font-titleFont transition-all hover:text-gray-400'>Create a Listing</Link></li>}
+          {user && <h3 className="cursor-pointer font-titleFont transition-all hover:text-gray-400"><Link to={"/myblogs/"+user._id}>My Listing</Link></h3>}
+          {user && <li onClick={handleLogout} className='cursor-pointer font-titleFont transition-all hover:text-gray-400'>Logout</li>}
         </ul>
       </div>
     </div>

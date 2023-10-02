@@ -2,14 +2,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Edit from '../../components/Edit/Edit';
-import StarRating from '../../components/StarRating/StarRating';
-import { UserContext } from '../../context/UserContext';
+import Edit from '../components/Edit';
+import StarRating from '../components/StarRating';
+import { UserContext } from '../context/UserContext';
 import { useContext } from 'react';
-import Comment from '../../components/Comment';
+import Comment from '../components/Comment';
 import { AiFillDelete } from "react-icons/ai";
 import { IoArrowBackSharp } from "react-icons/io5";
-import URL from '../../URL'
+import URL from '../URL'
 
 
 export default function CoffeeShopDetailPage() {
