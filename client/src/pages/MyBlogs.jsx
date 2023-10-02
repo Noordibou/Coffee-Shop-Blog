@@ -9,19 +9,20 @@ export default function MyBlogPage() {
   const [coffeeShops, setCoffeeShops] = useState([]);
   const { user } = useContext(UserContext);
 
-  const getBlogPosts = () => {
-    axios
-      .get(`${URL}/coffeeshops/user/${user._id}`)
-      .then((response) => setCoffeeShops(response.data))
-      .catch((error) => console.log(error));
-  };
-
   useEffect(() => {
     if (user) {
-      getBlogPosts();
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`${URL}/coffeeshops/user/${user._id}`);
+          setCoffeeShops(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
     }
   }, [user]);
-
+  
   return (
     <>
       <div>

@@ -1,16 +1,18 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom"
 import { UserContext } from '../context/UserContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import URL from '../URL'
 
 export default function Navbar() {
 
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const menuRef = useRef(null);
+  const { user } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
+  
+ 
 
   useEffect(() => {
     const handleClickOutside = e => {
@@ -28,8 +30,6 @@ export default function Navbar() {
     setIsMenuOpen(prev => !prev);
   };
 
-  const { user } = useContext(UserContext);
-  const { setUser } = useContext(UserContext);
 
   const handleLogout = async () => {
     try {
@@ -76,6 +76,7 @@ export default function Navbar() {
         </div>
 
         <ul className='hidden md:flex justify-center gap-6 text-bodyColor lg:text-[18px] font-titleFont pt-4 '>
+       
           {!user ? <li><Link to='/login' className='cursor-pointer font-titleFont transition-all hover:text-gray-400  '>Login</Link></li>
             : <li><Link to='/coffeeshops' className='cursor-pointer font-titleFont transition-all hover:text-gray-400  '>Coffee Shops</Link></li>}
 
