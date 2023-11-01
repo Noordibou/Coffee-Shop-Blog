@@ -16,17 +16,7 @@ export default function Navbar() {
 
 
 
-  useEffect(() => {
-    const handleClickOutside = e => {
-      if (isMenuOpen && !menuRef.current.contains(e.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
+ 
 
   const handleMenuButtonClick = () => {
     setIsMenuOpen(prev => !prev);
@@ -46,6 +36,17 @@ export default function Navbar() {
     }
   }
 
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (isMenuOpen && !menuRef.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMenuOpen, cookies, removeCookie]);
 
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
