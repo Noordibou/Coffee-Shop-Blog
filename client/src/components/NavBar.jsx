@@ -12,11 +12,8 @@ export default function Navbar() {
   const menuRef = useRef(null);
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
-  const [cookies, removeCookie] = useCookies([]);
+  const [cookies, setCookie] = useCookies(['token']);
 
-
-
- 
 
   const handleMenuButtonClick = () => {
     setIsMenuOpen(prev => !prev);
@@ -25,9 +22,9 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      console.log("logging out... on frontend hoome screen")
-      removeCookie("token");
+      setCookie('token', '', { path: '/', expires: new Date(0) });
       const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
+      console.log("logging out... on frontend hoome screen")
       console.log(res)
       setUser(null);
       navigate('/');
@@ -46,7 +43,7 @@ export default function Navbar() {
     document.addEventListener('click', handleClickOutside);
 
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen, cookies, removeCookie]);
+  }, [isMenuOpen, cookies, setCookie]);
 
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>

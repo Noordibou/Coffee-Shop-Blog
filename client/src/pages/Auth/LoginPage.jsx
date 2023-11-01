@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import URL from '../../URL'
+import { useCookies } from 'react-cookie';
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const { setUser } = useContext(UserContext)
+    const [cookies, setCookie] = useCookies(['token']);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +26,7 @@ export default function LoginPage() {
                 
                 console.log("Login successful!");
                 setUser(response.data)
+                setCookie('token', response.data.token, { path: '/' });
                 navigate('/');
             } else {
                 setError("Wrong credentials!");
