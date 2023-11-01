@@ -55,12 +55,12 @@ router.post("/login", async (req, res) => {
 //LOGOUT
 router.get("/logout", async (req, res) => {
     try {
-        res.clearCookie("token", { sameSite: "none", secure: true,}).status(200).send("User logged out successfully!")
-
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
+        res.clearCookie('token');
+        res.status(200).send({ message: 'Logged out successfully' });
+      } catch (error) {
+        console.error("Error clearing cookie:", error);
+        res.status(500).send({ message: 'Error clearing cookie' });
+      }    
 })
 
 //REFETCH USER
