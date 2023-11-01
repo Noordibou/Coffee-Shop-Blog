@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 import URL from '../URL'
+import { useCookies } from 'react-cookie';
 
 export default function Navbar() {
 
@@ -11,8 +12,29 @@ export default function Navbar() {
   const menuRef = useRef(null);
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
+  const [cookies, removeCookie] = useCookies([]);
 
 
+
+ 
+
+  const handleMenuButtonClick = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+
+  const handleLogout = async () => {
+    try {
+      console.log("logging out... on frontend hoome screen")
+      removeCookie("token");
+      const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
+      console.log(res)
+      setUser(null);
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     const handleClickOutside = e => {
@@ -24,24 +46,7 @@ export default function Navbar() {
     document.addEventListener('click', handleClickOutside);
 
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-
-  const handleMenuButtonClick = () => {
-    setIsMenuOpen(prev => !prev);
-  };
-
-
-  const handleLogout = async () => {
-    try {
-      const res = await axios.get(URL + `/auth/logout`, { withCredentials: true });
-      console.log(res)
-      setUser(null);
-      navigate('/');
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
+  }, [isMenuOpen, cookies, removeCookie]);
 
   return (
     <div className='sticky top-0 bg-gray-100 z-50 md:px-4 shadow'>
